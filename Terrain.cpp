@@ -10,7 +10,7 @@
 
 #include <SDL.h>
 
-constexpr Terrain::Terrain() : TERRAIN_WIDTH(56), TERRAIN_HEIGHT(62) {
+Terrain::Terrain() : TERRAIN_WIDTH(56), TERRAIN_HEIGHT(62) {
 
 //    for (int x = 0; x < std::size(map) ; x++) {
 //
@@ -71,12 +71,12 @@ int Terrain::getSideLimit(const Position &position, Side direction) const {
             if (map[position.x / BLOC_SIZE][(position.y + CHARACTER_SIZE) / BLOC_SIZE].isWall()){
                 return -1;
             }
-            return (map[position.x / BLOC_SIZE][((position.y + CHARACTER_SIZE) / BLOC_SIZE) + 1].isWall()) ? (position.y + CHARACTER_SIZE) + ((position.y + CHARACTER_SIZE) % BLOC_SIZE) : NO_WALL_NEXT;
+            return (map[position.x / BLOC_SIZE][((position.y + CHARACTER_SIZE) / BLOC_SIZE) + 1].isWall()) ? (((position.y + CHARACTER_SIZE) / BLOC_SIZE) + 1) * BLOC_SIZE : NO_WALL_NEXT;
     }
 }
 
 Terrain::Terrain(std::string fileName, int terrain_width, int terrain_height):
-    TERRAIN_WIDTH(terrain_width), TERRAIN_HEIGHT(terrain_height), door(nullptr)
+    TERRAIN_WIDTH(terrain_width), TERRAIN_HEIGHT(terrain_height), door{nullptr, nullptr, nullptr, nullptr}
 {
     std::ifstream fileReader {fileName} ;
     std::string line;
@@ -86,7 +86,8 @@ Terrain::Terrain(std::string fileName, int terrain_width, int terrain_height):
 
     }
 
-
+    int doorX = -1;
+    int doorY = -1;
     for (int y = 0; y < TERRAIN_HEIGHT; ++y) {
         std::getline(fileReader, line);
         if(std::size(line) != TERRAIN_WIDTH){
@@ -98,13 +99,27 @@ Terrain::Terrain(std::string fileName, int terrain_width, int terrain_height):
                 map[x][y].setWall(true);
             }
             else if(line[x] == '_'){
-                if(door == nullptr) {
-                    door = &(map[x][y]);
-                    map[x][y].setWall(true);
-                }
-                else{
-                    throw Terrain_Exception("multiple doors error");
-                }
+                map[x][y].setWall(true);
+
+//                if(door[0] == nullptr) {
+//                    doorX = x;
+//                    doorY = y;
+//                    door[0] = &(map[x][y]);
+//                    map[x][y].setWall(true);
+//                }
+//                else{
+//                    if (door[1] == nullptr){
+//                        if (doorX == x-1 || doorY == y - 1){
+//                            door[1] = &(map[x][y]);
+//                            map[x][y].setWall(true);
+//                        }
+//                        else{
+//                            throw Terrain_Exception("multiple doors error (2 doors parts not next to each other)" );
+//
+//                        }
+//                    }
+//                    throw Terrain_Exception("multiple doors error (2 doors parts already set)" );
+//                }
             }
         }
     }
@@ -117,7 +132,7 @@ Terrain::Terrain(std::string fileName, int terrain_width, int terrain_height):
 
 }
 
-Bloc const *Terrain::getDoor() const {
+Bloc const * const*Terrain::getDoor() const {
     return door;
 }
 

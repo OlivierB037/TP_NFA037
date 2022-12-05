@@ -11,6 +11,7 @@
 #include "Hero.h"
 #include "Mouvement.h"
 #include "Logger.h"
+#include "Terrain_Exception.h"
 
 bool arrowPressed();
 void showFormattedDialog(char *format,...);
@@ -34,133 +35,138 @@ int main(int argumentCount, char* arguments[])
 
 
     Hero hero;
-    Terrain terrain;
-    //SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message",msg,window);
+    try {
+        Terrain terrain("terrain.txt", 56, 62);
+        //Terrain terrain;
+        //SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message",msg,window);
 
 
-    int continuer = 1;
-    int compteurDePas = 1;
-    SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer,background,NULL,NULL);
-    SDL_RenderCopy(renderer, texture, &(hero.getImage().getBaseRect(LEFT)), &(hero.getPosition()));
-    SDL_RenderPresent(renderer);
-    SDL_EventState(SDL_MOUSEMOTION, SDL_IGNORE);
-    //SystemParametersInfo(SPI_SETKEYBOARDDELAY, 0, 0, 0);
-
-    SDL_FreeSurface(imagePerso);
-
-    SDL_Event event;
-    Side oldSide;
-
-    bool timing = false;
-
-//    Logger::getInstance()->newLogSection();
-    bool leftPressed = false, upPressed = false, rightPressed = false,downPressed = false;
-    while (continuer)
-    {
-
-        SDL_PollEvent(&event);
-
-        switch (event.type)
-        {
-
-            case SDL_QUIT:
-                //fprintf(fichier, "%s quit event", ctime(&crtTime));
-                continuer = 0;
-                break;
-
-            case SDL_KEYDOWN:
-                //fprintf(fichier, "%s mouvements.c : \nkeydown event", ctime(&crtTime));
-                switch (event.key.keysym.sym)
-                {
-                    case SDLK_ESCAPE:
-                        //fprintf(fichier, "%s mouvements.c : \nescape event", ctime(&crtTime));
-                        continuer = 0;
-                        break;
-
-
-                    case SDLK_UP:
-                        Logger::getInstance()->addInfoLog("up pressed");
-                        upPressed = true;
-                        Mouvement::move(UP,hero,terrain, window);
-
-                        break;
-                    case SDLK_DOWN:
-                        Logger::getInstance()->addInfoLog("down pressed");
-                        downPressed = true;
-                        Mouvement::move(DOWN,hero,terrain, window);
-                        break;
-                    case SDLK_LEFT:
-                        Logger::getInstance()->addInfoLog("left pressed");
-                        leftPressed = true;
-                        Mouvement::move(LEFT,hero,terrain, window);
-                        break;
-                    case SDLK_RIGHT:
-                        Logger::getInstance()->addInfoLog("right pressed");
-                        rightPressed = true;
-                        Mouvement::move(RIGHT,hero,terrain, window);
-                        break;
-
-                        /*vidage du buffer
-
-                                default:
-                                    cleanBuffer();
-                                break;*/
-                }
-
-            case SDL_KEYUP:
-                switch (event.key.keysym.sym)
-                {
-                    case SDLK_UP:
-                        upPressed = false;
-                        if (!arrowPressed()) {
-                            hero.setCurrentSprite(&(hero.getImage().getUp1()));
-                            hero.setStepCount(1);
-                        }
-                        break;
-                    case SDLK_DOWN:
-                        downPressed = false;
-                        if (!arrowPressed()){
-                            hero.setCurrentSprite(&(hero.getImage().getDown1()));
-                            hero.setStepCount(1);
-                        }
-
-                        break;
-                    case SDLK_LEFT:
-                        leftPressed = false;
-                        if (!arrowPressed()){
-                            hero.setCurrentSprite(&(hero.getImage().getLeft1()));
-                            hero.setStepCount(1);
-                        }
-
-                        break;
-                    case SDLK_RIGHT:
-                        rightPressed = false;
-                        if (!arrowPressed()){
-                            hero.setCurrentSprite(&(hero.getImage().getRight1()));
-                            hero.setStepCount(1);
-                        }
-
-                        break;
-
-                }
-
-                break;
-
-        }
-
-        //envoyer le sdl_rect a mouvement pour changer partie sprite affichée
-
-        //SDL_UpdateTexture(texture, NULL, imageZabeth->pixels, imageZabeth->pitch);
-
+        int continuer = 1;
+        int compteurDePas = 1;
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer,background,NULL,NULL);
-
-
-        SDL_RenderCopy(renderer, texture, hero.getCurrentSprite(), &(hero.getPosition()));
-
+        SDL_RenderCopy(renderer, texture, &(hero.getImage().getBaseRect(LEFT)), &(hero.getPosition()));
         SDL_RenderPresent(renderer);
+        SDL_EventState(SDL_MOUSEMOTION, SDL_IGNORE);
+        //SystemParametersInfo(SPI_SETKEYBOARDDELAY, 0, 0, 0);
 
+        SDL_FreeSurface(imagePerso);
+
+        SDL_Event event;
+        Side oldSide;
+
+        bool timing = false;
+
+//        Logger::getInstance()->newLogSection();
+        bool leftPressed = false, upPressed = false, rightPressed = false,downPressed = false;
+        while (continuer)
+        {
+
+            SDL_PollEvent(&event);
+
+            switch (event.type)
+            {
+
+                case SDL_QUIT:
+                    //fprintf(fichier, "%s quit event", ctime(&crtTime));
+                    continuer = 0;
+                    break;
+
+                case SDL_KEYDOWN:
+                    //fprintf(fichier, "%s mouvements.c : \nkeydown event", ctime(&crtTime));
+                    switch (event.key.keysym.sym)
+                    {
+                        case SDLK_ESCAPE:
+                            //fprintf(fichier, "%s mouvements.c : \nescape event", ctime(&crtTime));
+                            continuer = 0;
+                            break;
+
+
+                        case SDLK_UP:
+                            Logger::getInstance()->addInfoLog("up pressed");
+                            upPressed = true;
+                            Mouvement::move(UP,hero,terrain, window);
+
+                            break;
+                        case SDLK_DOWN:
+                            Logger::getInstance()->addInfoLog("down pressed");
+                            downPressed = true;
+                            Mouvement::move(DOWN,hero,terrain, window);
+                            break;
+                        case SDLK_LEFT:
+                            Logger::getInstance()->addInfoLog("left pressed");
+                            leftPressed = true;
+                            Mouvement::move(LEFT,hero,terrain, window);
+                            break;
+                        case SDLK_RIGHT:
+                            Logger::getInstance()->addInfoLog("right pressed");
+                            rightPressed = true;
+                            Mouvement::move(RIGHT,hero,terrain, window);
+                            break;
+
+                            /*vidage du buffer
+
+                                    default:
+                                        cleanBuffer();
+                                    break;*/
+                    }
+
+                case SDL_KEYUP:
+                    switch (event.key.keysym.sym)
+                    {
+                        case SDLK_UP:
+                            upPressed = false;
+                            if (!arrowPressed()) {
+                                hero.setCurrentSprite(&(hero.getImage().getUp1()));
+                                hero.setStepCount(1);
+                            }
+                            break;
+                        case SDLK_DOWN:
+                            downPressed = false;
+                            if (!arrowPressed()){
+                                hero.setCurrentSprite(&(hero.getImage().getDown1()));
+                                hero.setStepCount(1);
+                            }
+
+                            break;
+                        case SDLK_LEFT:
+                            leftPressed = false;
+                            if (!arrowPressed()){
+                                hero.setCurrentSprite(&(hero.getImage().getLeft1()));
+                                hero.setStepCount(1);
+                            }
+
+                            break;
+                        case SDLK_RIGHT:
+                            rightPressed = false;
+                            if (!arrowPressed()){
+                                hero.setCurrentSprite(&(hero.getImage().getRight1()));
+                                hero.setStepCount(1);
+                            }
+
+                            break;
+
+                    }
+
+                    break;
+
+            }
+
+            //envoyer le sdl_rect a mouvement pour changer partie sprite affichée
+
+            //SDL_UpdateTexture(texture, NULL, imageZabeth->pixels, imageZabeth->pitch);
+
+            SDL_RenderClear(renderer);
+            SDL_RenderCopy(renderer,background,NULL,NULL);
+
+
+            SDL_RenderCopy(renderer, texture, hero.getCurrentSprite(), &(hero.getPosition()));
+
+            SDL_RenderPresent(renderer);
+
+        }
+    } catch (Terrain_Exception const &e) {
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "message", e.what(), window);
     }
     return EXIT_SUCCESS;
 }

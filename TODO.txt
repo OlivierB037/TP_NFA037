@@ -3,3 +3,5 @@
 - lenteur changement de directionsi appui touche1 ->touche 1 + touche 2 -> touche 1 pas prise en compte
 - attraper les exeptions de construction du terrain
 - chargement du terrain afficher dialogue wait ou créer thread
+- régler pblm multiple doors (créer boucle pour checker 4 parties de la porte)
+- permettre de tourner en etant placé un peu avant le virage
