@@ -1,0 +1,3 @@
+- dans main SDLK_UP : créer methode vérifiant qu'aucune des flèche n'est enfoncée
+- passer a système de deplacement par acceleration
+- lenteur changement de directionsi appui touche1 ->touche 1 + touche 2 -> touche 1 pas prise en compte

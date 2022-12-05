@@ -1,0 +1,3 @@
+C:/Users/aperi/CLionProjects/NFA037/CPP/TP NFA037/cmake-build-debug/CMakeFiles/TP_NFA037.dir
+C:/Users/aperi/CLionProjects/NFA037/CPP/TP NFA037/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/aperi/CLionProjects/NFA037/CPP/TP NFA037/cmake-build-debug/CMakeFiles/rebuild_cache.dir

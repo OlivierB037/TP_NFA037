@@ -1,0 +1,401 @@
+---------------- NEW LOG ------------------
+INFO LOG Sat Dec 03 19:43:07 2022
+3/11/2022/ 19H:43mn:7s : 
+	test du logINFO LOG 3/11/2022/ 20H:12mn:31s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:32s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	left pressed
+INFO LOG 3/11/2022/ 20H:12mn:33s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:34s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 20H:12mn:35s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:0s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:1s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:2s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:3s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:4s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:5s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:5s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:5s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:5s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:5s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:5s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:5s : 
+	down pressed
+INFO LOG 3/11/2022/ 21H:1mn:5s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
+INFO LOG 3/11/2022/ 21H:1mn:6s : 
+	left pressed
