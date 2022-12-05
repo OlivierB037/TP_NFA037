@@ -10,18 +10,24 @@
 class Bloc {
 
 public:
+
     Bloc();
     explicit Bloc(bool _wall);
 //    virtual bool isInside();
 
-    void setWall(bool _wall);
+
 
     bool isWall() const;
+
+
+
+    void setWall(bool _wall);
     // si difference entre position et bloc < deplacement_scale
 
 
 private:
     bool wall;
+
 
 
 };

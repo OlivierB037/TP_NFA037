@@ -5,8 +5,8 @@
 #ifndef TP_01_TERRAIN_H
 #define TP_01_TERRAIN_H
 #define BLOC_SIZE 9
-#define TERRAIN_WIDTH 56
-#define TERRAIN_HEIGHT 62
+
+
 #define NO_WALL_NEXT 11111
 
 #include "Bloc.h"
@@ -15,11 +15,17 @@
 
 class Terrain {
 public:
-    Terrain();
+
+    constexpr Terrain();
+    const int TERRAIN_WIDTH;
+    const int TERRAIN_HEIGHT;
+    Terrain(std::string fileName, int terrain_width, int terrain_height);
     Bloc const& getSideBloc(Position const &position, Side direction );
     int getSideLimit(Position const &position,Side direction) const;
+    Bloc const *getDoor() const;
 private:
-    Bloc map[TERRAIN_WIDTH][TERRAIN_HEIGHT];
+    Bloc **map;
+    Bloc const *door;
 
 };
 

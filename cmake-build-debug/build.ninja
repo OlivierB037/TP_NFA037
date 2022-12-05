@@ -119,6 +119,13 @@ build CMakeFiles/TP_NFA037.dir/Logger.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
   OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
 
+build CMakeFiles/TP_NFA037.dir/Terrain_Exception.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Terrain_Exception.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\Terrain_Exception.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
+  OBJECT_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target TP_NFA037
@@ -127,7 +134,7 @@ build CMakeFiles/TP_NFA037.dir/Logger.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:
 #############################################
 # Link the executable TP_NFA037.exe
 
-build TP_NFA037.exe: CXX_EXECUTABLE_LINKER__TP_NFA037_Debug CMakeFiles/TP_NFA037.dir/main.cpp.obj CMakeFiles/TP_NFA037.dir/Position.cpp.obj CMakeFiles/TP_NFA037.dir/Hero.cpp.obj CMakeFiles/TP_NFA037.dir/Perso.cpp.obj CMakeFiles/TP_NFA037.dir/Phantom.cpp.obj CMakeFiles/TP_NFA037.dir/Image.cpp.obj CMakeFiles/TP_NFA037.dir/Mouvement.cpp.obj CMakeFiles/TP_NFA037.dir/Terrain.cpp.obj CMakeFiles/TP_NFA037.dir/Bloc.cpp.obj CMakeFiles/TP_NFA037.dir/Logger.cpp.obj | C$:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2main.a C$:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2.dll.a
+build TP_NFA037.exe: CXX_EXECUTABLE_LINKER__TP_NFA037_Debug CMakeFiles/TP_NFA037.dir/main.cpp.obj CMakeFiles/TP_NFA037.dir/Position.cpp.obj CMakeFiles/TP_NFA037.dir/Hero.cpp.obj CMakeFiles/TP_NFA037.dir/Perso.cpp.obj CMakeFiles/TP_NFA037.dir/Phantom.cpp.obj CMakeFiles/TP_NFA037.dir/Image.cpp.obj CMakeFiles/TP_NFA037.dir/Mouvement.cpp.obj CMakeFiles/TP_NFA037.dir/Terrain.cpp.obj CMakeFiles/TP_NFA037.dir/Bloc.cpp.obj CMakeFiles/TP_NFA037.dir/Logger.cpp.obj CMakeFiles/TP_NFA037.dir/Terrain_Exception.cpp.obj | C$:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2main.a C$:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2.dll.a
   FLAGS = -g
   LINK_FLAGS = -static-libstdc++
   LINK_LIBRARIES = -lmingw32  -mwindows  C:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2main.a  C:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

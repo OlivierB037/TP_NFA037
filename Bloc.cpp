@@ -9,8 +9,10 @@ Bloc::Bloc(bool _wall) {
     this->wall = _wall;
 }
 
+
+
 void Bloc::setWall(bool _wall) {
-    this->wall = _wall;
+    Bloc::wall = _wall;
 }
 
 bool Bloc::isWall() const {
