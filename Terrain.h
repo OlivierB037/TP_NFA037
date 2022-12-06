@@ -19,7 +19,7 @@ public:
     Terrain();
     const int TERRAIN_WIDTH;
     const int TERRAIN_HEIGHT;
-    Terrain(std::string fileName, int terrain_width, int terrain_height);
+    Terrain(std::string fileName, int terrain_width, int terrain_height, SDL_Window *window);
     Bloc const& getSideBloc(Position const &position, Side direction );
     int getSideLimit(Position const &position,Side direction) const;
     Bloc const * const*getDoor() const;

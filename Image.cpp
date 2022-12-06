@@ -54,21 +54,22 @@ Image::Image(int _left_1_x, int _left_1_y, int _left_2_x, int _left_2_y,
 {
 }
 
-const SDL_Rect &Image::getBaseRect(Side side) const {
+const SDL_Rect *Image::getBaseRect(Side side) const {
     switch (side) {
         case LEFT:
-            return left_1;
+            return &left_1;
             break;
         case RIGHT:
-            return right_1;
+            return &right_1;
             break;
         case UP:
-            return up_1;
+            return &up_1;
             break;
         case DOWN:
-            return down_1;
+            return &down_1;
             break;
         default:
+            return nullptr;
             break;
     }
 }

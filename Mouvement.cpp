@@ -5,7 +5,7 @@
 #include "Mouvement.h"
 
 
-const SDL_Rect &Mouvement::move(Side side, Perso &perso,Terrain const &terrain, SDL_Window *window) {
+void Mouvement::move(Side side, Perso &perso,Terrain const &terrain, SDL_Window *window) {
 
         switch (side) {
             case LEFT: {

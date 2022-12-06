@@ -14,7 +14,7 @@
 class Mouvement {
 public:
 
-    static const SDL_Rect &move(Side side, Perso &perso,Terrain const &terrain, SDL_Window *window);
+    static void move(Side side, Perso &perso,Terrain const &terrain, SDL_Window *window);
 private:
     static bool collision(Position const &position, Side direction,Terrain const &terrain);
 };

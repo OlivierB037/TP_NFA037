@@ -49,7 +49,7 @@ public:
 
 
 
-    const SDL_Rect &getBaseRect(Side side) const;
+    const SDL_Rect *getBaseRect(Side side) const;
 
 
 

@@ -36,7 +36,7 @@ int main(int argumentCount, char* arguments[])
 
     Hero hero;
     try {
-        Terrain terrain("terrain.txt", 56, 62);
+        Terrain terrain("terrain.txt", 56, 62, window);
         //Terrain terrain;
         //SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message",msg,window);
 
@@ -45,7 +45,7 @@ int main(int argumentCount, char* arguments[])
         int compteurDePas = 1;
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer,background,NULL,NULL);
-        SDL_RenderCopy(renderer, texture, &(hero.getImage().getBaseRect(LEFT)), &(hero.getPosition()));
+        SDL_RenderCopy(renderer, texture, hero.getImage().getBaseRect(LEFT), &(hero.getPosition()));
         SDL_RenderPresent(renderer);
         SDL_EventState(SDL_MOUSEMOTION, SDL_IGNORE);
         //SystemParametersInfo(SPI_SETKEYBOARDDELAY, 0, 0, 0);

@@ -50,13 +50,17 @@ Bloc const &Terrain::getSideBloc(const Position &position, Side direction) {
 }
 
 int Terrain::getSideLimit(const Position &position, Side direction) const {
-    switch (direction) {
-        case LEFT:
-            if (map[position.x / BLOC_SIZE][position.y / BLOC_SIZE].isWall()){
+    switch (direction) {// inclure constante de retour indiquant le nombre de pixel manquants pour pouvoir tourner
+        case LEFT: {
+            if (map[position.x / BLOC_SIZE][position.y / BLOC_SIZE].isWall()) { // is the player already inside a wall
                 return -1;
             }
-            return (map[(position.x / BLOC_SIZE) - 1][position.y / BLOC_SIZE].isWall()) ? position.x - (position.x % BLOC_SIZE) : NO_WALL_NEXT;
-            break;
+            int leftBlocX = (position.x / BLOC_SIZE) - 1;
+            int leftBlocY = position.y / BLOC_SIZE;
+            return ((map[leftBlocX][leftBlocY].isWall()) || map[leftBlocX][leftBlocY + 1].isWall() ||
+                    map[leftBlocX][leftBlocY + 2].isWall() || map[leftBlocX][leftBlocY + 3].isWall()) ? position.x - (position.x % BLOC_SIZE) : NO_WALL_NEXT;
+
+        }
         case RIGHT:
             if (map[(position.x + CHARACTER_SIZE) / BLOC_SIZE][position.y / BLOC_SIZE].isWall()){
                 return -1;
@@ -72,10 +76,12 @@ int Terrain::getSideLimit(const Position &position, Side direction) const {
                 return -1;
             }
             return (map[position.x / BLOC_SIZE][((position.y + CHARACTER_SIZE) / BLOC_SIZE) + 1].isWall()) ? (((position.y + CHARACTER_SIZE) / BLOC_SIZE) + 1) * BLOC_SIZE : NO_WALL_NEXT;
+            default:
+                return -1;
     }
 }
 
-Terrain::Terrain(std::string fileName, int terrain_width, int terrain_height):
+Terrain::Terrain(std::string fileName, int terrain_width, int terrain_height, SDL_Window *window):
     TERRAIN_WIDTH(terrain_width), TERRAIN_HEIGHT(terrain_height), door{nullptr, nullptr, nullptr, nullptr}
 {
     std::ifstream fileReader {fileName} ;
@@ -86,7 +92,7 @@ Terrain::Terrain(std::string fileName, int terrain_width, int terrain_height):
 
     }
 
-    int doorX = -1;
+    int doorIndex = 0;
     int doorY = -1;
     for (int y = 0; y < TERRAIN_HEIGHT; ++y) {
         std::getline(fileReader, line);
@@ -99,27 +105,50 @@ Terrain::Terrain(std::string fileName, int terrain_width, int terrain_height):
                 map[x][y].setWall(true);
             }
             else if(line[x] == '_'){
-                map[x][y].setWall(true);
+                //map[x][y].setWall(true);
+                //const char c[] = {static_cast<char>('0' + ((char)doorIndex)),'-',static_cast<char>('0'+ ((char)doorY)),'\0'};
 
-//                if(door[0] == nullptr) {
-//                    doorX = x;
-//                    doorY = y;
-//                    door[0] = &(map[x][y]);
-//                    map[x][y].setWall(true);
-//                }
-//                else{
-//                    if (door[1] == nullptr){
-//                        if (doorX == x-1 || doorY == y - 1){
-//                            door[1] = &(map[x][y]);
-//                            map[x][y].setWall(true);
-//                        }
-//                        else{
-//                            throw Terrain_Exception("multiple doors error (2 doors parts not next to each other)" );
-//
-//                        }
-//                    }
-//                    throw Terrain_Exception("multiple doors error (2 doors parts already set)" );
-//                }
+
+                if(door[0] == nullptr) { //first door bloc not set
+                    if (line[x+1] == '_'){ //horizontal door
+                        for (int i = 0; i < 4; ++i) {
+                            if (line[x + i] == '_'){
+                                door[i] = &(map[x + i][y]);
+                                map[x + i][y].setWall(true);
+
+                            }
+                            else{
+                                throw Terrain_Exception("doors format error : not enough door blocs (horizontal door detected)" );
+                            }
+                        }
+                        x += 3;
+                    }
+                    else{// vertical door
+
+                        doorY = y;
+                        door[doorIndex] = &(map[x][y]);
+                        map[x][y].setWall(true);
+                        doorIndex++;
+                    }
+
+
+                }
+                else{
+                    if (door[doorIndex] == nullptr){
+
+                       if(doorY == y - 1){
+                           doorY = y;
+                           door[doorIndex] = &(map[x][y]);
+                           map[x][y].setWall(true);
+                           doorIndex++;
+                        }else{
+                           throw Terrain_Exception("doors format error : not enough door blocs (vertical door detected)" );
+
+                        }
+                    }else {
+                        throw Terrain_Exception("multiple doors error (all 4 door blocs already set)");
+                    }
+                }
             }
         }
     }

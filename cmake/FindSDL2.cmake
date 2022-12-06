@@ -67,7 +67,7 @@
 
 # message("<FindSDL2.cmake>")
 
-SET(SDL2_PATH C:\\Users\\aperi\\programmation\\libraries\\SDL2-devel-2.26.0-mingw\\SDL2-2.26.0\\x86_64-w64-mingw32
+SET(SDL2_PATH "${PROJECT_SOURCE_DIR}/SDL2"
 )
 SET(SDL2_SEARCH_PATHS ${SDL2_PATH})
 

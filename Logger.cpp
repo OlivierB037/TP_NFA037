@@ -28,6 +28,7 @@ const Logger *Logger::getInstance() {
     if (instance == nullptr){
         instance = new Logger();
     }
+    return instance;
 }
 
 void Logger::newLogSection() const {
