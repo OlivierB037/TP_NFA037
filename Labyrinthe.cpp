@@ -12,7 +12,11 @@
 #include <iostream>
 
 #include <SDL.h>
-
+template<typename T>
+bool Labyrinthe::instanceOf(Bloc *trgt)
+{
+    return dynamic_cast<T*>(trgt);
+}
 //Labyrinthe::Labyrinthe() : DIMENSION_X(56), DIMENSION_Y(62) {
 //
 ////    for (int x = 0; x < std::size(map) ; x++) {
@@ -238,11 +242,7 @@ int Labyrinthe::checkFood(Hero &hero, FoodListener &listener) {
     }
 }
 
-template<typename T>
-bool Labyrinthe::instanceOf(Bloc *trgt)
-{
-    return dynamic_cast<T*>(trgt);
-}
+
 
 
 
