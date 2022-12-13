@@ -48,7 +48,7 @@ public:
     void setCurrentSprite(const SDL_Rect *currentSprite);
 
     inline static const char* sprite_fileName{ "persos.bmp" };
-
+    inline static const int MAXIMUM_MOTION_SCALE{6};
 
 private:
     Position position;

@@ -17,7 +17,7 @@
 #include <vector>
 enum Side
 {
-    LEFT, RIGHT, UP, DOWN, MOVE_LEFT, MOVE_RIGHT, MOVE_UP, MOVE_DOWN
+    LEFT, RIGHT, UP, DOWN, NONE
 };
 class Image
 {

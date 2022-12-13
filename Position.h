@@ -16,7 +16,8 @@ public:
     void setY(int _y);
 
     void afficher() const noexcept;
-
+    void incrementX(int value);
+    void incrementY(int value);
 
 
 private:

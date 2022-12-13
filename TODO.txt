@@ -1,7 +1,11 @@
-- dans main SDLK_UP : créer methode vérifiant qu'aucune des flèche n'est enfoncée
-- passer a système de deplacement par acceleration
-- lenteur changement de directionsi appui touche1 ->touche 1 + touche 2 -> touche 1 pas prise en compte
-- attraper les exeptions de construction du terrain
+
+
+
+
 - chargement du terrain afficher dialogue wait ou créer thread
-- régler pblm multiple doors (créer boucle pour checker 4 parties de la porte)
+
 - permettre de tourner en etant placé un peu avant le virage
+- créer classe Food correspondant à 4x4 blocs vides, la nourriture est mangée quand le centre du perso est à +- moving_scale du centre des blocs food
+- "" 1-2 pixels traversent du mur cotés droits et bas
+- surcharger op << pour afficher classes importantes
+- chercher fuites de mémoire

@@ -3,7 +3,9 @@
 //
 
 #include "Position.h"
+#include "Logger.h"
 #include <iostream>
+#include <sstream>
 
 Position::Position() : SDL_Rect() {
     x = 0;
@@ -40,7 +42,17 @@ void Position::setY(int _y) {
 }
 
 void Position::afficher() const noexcept {
-    std::cout << "(" << x << " ; " << y <<")" << std::endl;
+    std::ostringstream outStream;
+    outStream << "Position : (" << this->x << ";" << this->y << ")";
+    Logger::getInstance()->addInfoLog(outStream.str());
+}
+
+void Position::incrementX(int value) {
+    this->x+=value;
+}
+
+void Position::incrementY(int value) {
+    this->y+=value;
 }
 
 

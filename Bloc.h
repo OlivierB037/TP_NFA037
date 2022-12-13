@@ -5,28 +5,28 @@
 #ifndef TP_01_BLOC_H
 #define TP_01_BLOC_H
 #include <SDL_rect.h>
-#include "iostream"
+#include <iostream>
 
 class Bloc {
 
 public:
 
     Bloc();
-    explicit Bloc(bool _wall);
+    explicit Bloc(bool _crossable);
 //    virtual bool isInside();
 
 
 
-    bool isWall() const;
+    virtual bool isCrossable() const;
 
 
 
-    void setWall(bool _wall);
+    virtual void setCrossable(bool _wall);
     // si difference entre position et bloc < deplacement_scale
-
+protected:
 
 private:
-    bool wall;
+    bool crossable;
 
 
 

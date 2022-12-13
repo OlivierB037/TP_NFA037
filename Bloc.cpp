@@ -5,21 +5,21 @@
 #include "Bloc.h"
 
 
-Bloc::Bloc(bool _wall) {
-    this->wall = _wall;
+Bloc::Bloc(bool _crossable) {
+    this->crossable = _crossable;
 }
 
 
 
-void Bloc::setWall(bool _wall) {
-    Bloc::wall = _wall;
+void Bloc::setCrossable(bool _wall) {
+    Bloc::crossable = _wall;
 }
 
-bool Bloc::isWall() const {
-    return wall;
+bool Bloc::isCrossable() const {
+    return crossable;
 }
 
 Bloc::Bloc() {
-    this->wall = false;
+    this->crossable = false;
 
 }

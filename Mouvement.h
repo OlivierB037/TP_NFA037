@@ -9,14 +9,15 @@
 #define SPRITE_RATE 3
 #include "Image.h"
 #include "Perso.h"
-#include "Terrain.h"
+#include "Labyrinthe.h"
 
 class Mouvement {
 public:
 
-    static void move(Side side, Perso &perso,Terrain const &terrain, SDL_Window *window);
+    static bool move(Side direction, Perso &perso, Labyrinthe const &terrain, SDL_Window *window);
+    static bool move(Side currentDirection, Side pendingDirection, Perso &perso, Labyrinthe const &terrain, SDL_Window *window);
 private:
-    static bool collision(Position const &position, Side direction,Terrain const &terrain);
+    static bool collision(Position const &position, Side direction, Labyrinthe const &terrain);
 };
 
 

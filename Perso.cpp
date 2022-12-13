@@ -40,12 +40,12 @@ void Perso::setCurrentSprite(const SDL_Rect *currentSprite) {
 }
 
 void Perso::incrementX(int value) {
-    position.setX(position.getX() + value);
+    position.incrementX(value);
 
 }
 
 void Perso::incrementY(int value) {
-    position.setY(position.getY() + value);
+    position.incrementY(value);
 
 }
 

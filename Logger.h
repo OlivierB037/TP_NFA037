@@ -21,7 +21,8 @@ public:
     Logger(Logger &copy) = delete;
     void operator=(const Logger &) = delete;
     static const Logger  * getInstance();
-    void addInfoLog(std::string msg) const;
+    void addInfoLog(const std::string& msg) const;
+    void addInfoLog(char * format,...);
     void newLogSection() const;
 private:
 
