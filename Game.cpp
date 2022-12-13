@@ -11,10 +11,15 @@
 #include "Labyrinth_Exception.h"
 #include "Key.h"
 #include "Arrows.h"
+#include "Food.h"
 
 
-void Game::foodEaten(SDL_Rect *foodPosition) {
-    this->emptyRects->push_back(foodPosition);
+void Game::foodEaten(int positionX, int positionY, int foodCount) {
+//    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "message", "foodEaten called", window);
+    this->emptyRects->push_back(new SDL_Rect({positionX,positionY,Food::FOOD_WIDTH,Food::FOOD_HEIGHT}));
+    if (foodCount == 0){
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Victory", "You win !", window);
+    }
 }
 
 Game::Game(const std::string& labyrinthFilePath) {
@@ -29,7 +34,7 @@ void Game::start() {
     SDL_Renderer* renderer;
     SDL_Init(SDL_INIT_VIDEO);
 
-    SDL_Window *window;
+
     //TODO créer fenêtre après labyrinthe pour avoir la taille
     SDL_CreateWindowAndRenderer(504, 558, SDL_WINDOW_ALWAYS_ON_TOP, &window, &renderer);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -39,7 +44,7 @@ void Game::start() {
     SDL_Surface* imagePerso = SDL_LoadBMP(Perso::sprite_fileName);
     //SDL_Surface* imagePerso = IMG_Load(Perso::sprite_fileName);
     texture = SDL_CreateTextureFromSurface(renderer, imagePerso);
-    SDL_Surface *backgroundSurface = SDL_LoadBMP("field_full.bmp");
+    SDL_Surface *backgroundSurface = SDL_LoadBMP("field_full24.bmp");
     SDL_Texture *backgroundFull = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
     SDL_FreeSurface(backgroundSurface);
     SDL_Surface *emptyBackGroundSurface = SDL_LoadBMP("field_empty.bmp");
@@ -192,18 +197,18 @@ void Game::start() {
                     if(SDL_GetKeyboardState(nullptr)[lastArrowPressed->getScanCode()]) {
 
 
-                        Mouvement::move(currentDirection, *(hero), *(labyrinthe), window);
+                        Mouvement::move(currentDirection, *(hero), *(labyrinthe), window, *this);
                     }
                 } else {
                     if (SDL_GetKeyboardState(nullptr)[Arrows::getDirectionKey(currentDirection)->getScanCode()] && SDL_GetKeyboardState(nullptr)[lastArrowPressed->getScanCode()]){
 //                        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "message", "other direction reached", window);
-                        if( Mouvement::move(currentDirection, lastArrowPressed->getDirection(), *hero, *labyrinthe, window)) {
+                        if( Mouvement::move(currentDirection, lastArrowPressed->getDirection(), *hero, *labyrinthe, window, *this)) {
                             currentDirection = lastArrowPressed->getDirection();
                         }
                     }
                     else if (SDL_GetKeyboardState(nullptr)[lastArrowPressed->getScanCode()]){
                         currentDirection = lastArrowPressed->getDirection();
-                        Mouvement::move(currentDirection, *hero, *labyrinthe, window);
+                        Mouvement::move(currentDirection, *hero, *labyrinthe, window, *this);
                     }
                 }
             }
@@ -223,11 +228,14 @@ void Game::start() {
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer, backgroundFull, NULL, NULL);
         if (!(emptyRects->empty())){
+
             for (SDL_Rect *r : *emptyRects ) {
+
                 SDL_RenderCopy(renderer, backgroundEmpty, r, r);
             }
         }
-
+//        SDL_Rect * test = new SDL_Rect({0,0,81,81});
+//        SDL_RenderCopy(renderer,backgroundEmpty,test,test);
         SDL_RenderCopy(renderer, texture, hero->getCurrentSprite(), &(hero->getPosition()));
 
         SDL_RenderPresent(renderer);

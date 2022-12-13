@@ -14,25 +14,18 @@
 class Perso
 {
 protected:
-    Perso(int _left_1_x, int _left_1_y,
-          int _left_2_x, int _left_2_y,
-          int _right_1_x, int _right_1_y,
-          int _right_2_x, int _right_2_y,
-          int _up_1_x, int _up_1_y,
-          int _up_2_x, int _up_2_y,
-          int _down_1_x, int _down_1_y,
-          int _down_2_x, int _down_2_y);
-    Perso() = delete;
+
+    Perso();
 public:
 
 
     void setPosition(int _x, int _y);
 
-    void changeSprite(Side direction);
+    virtual void changeSprite(Side direction) = 0;
 
     const Position &getPosition() const;
 
-    const Image &getImage() const;
+    virtual const  Image &getImage() const = 0;
 
     void incrementX(int value);
     void incrementY(int value);
@@ -43,17 +36,16 @@ public:
 
     void setStepCount(int stepCount);
 
-    const SDL_Rect *getCurrentSprite() const;
+    virtual const SDL_Rect *getCurrentSprite() const = 0;
 
-    void setCurrentSprite(const SDL_Rect *currentSprite);
+    virtual void setCurrentSprite(const SDL_Rect *currentSprite) = 0;
 
-    inline static const char* sprite_fileName{ "persos.bmp" };
+    inline static const char* sprite_fileName{ "persos24.bmp" };
     inline static const int MAXIMUM_MOTION_SCALE{6};
 
 private:
     Position position;
-    Image image;
-    SDL_Rect const *currentSprite;
+
     int stepCount;
 
 };

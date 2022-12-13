@@ -12,40 +12,13 @@
 #include <iostream>
 
 #include <SDL.h>
+#include <thread>
+
 template<typename T>
 bool Labyrinthe::instanceOf(Bloc *trgt)
 {
     return dynamic_cast<T*>(trgt);
 }
-//Labyrinthe::Labyrinthe() : DIMENSION_X(56), DIMENSION_Y(62) {
-//
-////    for (int x = 0; x < std::size(map) ; x++) {
-////
-////        for (int y = 0; y< std::size(*map);y++) {
-////            map[x][y] = new Bloc(false);
-////        }
-////    }
-//    map = new Bloc*[DIMENSION_X];
-//    for (int x =0; x < DIMENSION_X ; x++) {
-//        map[x] = new Bloc[DIMENSION_Y];
-//
-//    }
-//
-//    //bordures horizontales
-//    for (int y = 0; y < DIMENSION_Y; y++) {
-//        map[0][y].setCrossable(true);
-//        map[DIMENSION_X - 1][y].setCrossable(true);
-//
-//    }
-//
-//    //bordures verticales
-//    for (int x = 0; x < DIMENSION_X; ++x) {
-//        map[x][0].setCrossable(false);
-//        map[x][DIMENSION_Y - 1].setCrossable(false);
-//    }
-//
-//
-//}
 
 Bloc const *Labyrinthe::getSideBloc(const Position &position, Side direction) {
     if (direction == LEFT || direction == UP) {
@@ -129,9 +102,10 @@ int Labyrinthe::getSideLimit(const Position &position, Side direction, SDL_Windo
     }
 }
 
-Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terrain_height, SDL_Window *window):
+Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terrain_height, SDL_Window *_window):
         DIMENSION_X(terrain_width), DIMENSION_Y(terrain_height), door{nullptr, nullptr, nullptr, nullptr}
 {
+    this->window = _window;
     std::ifstream fileReader {fileName} ;
     std::string line;
     map = new Bloc**[DIMENSION_X];
@@ -203,7 +177,12 @@ Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terra
                 }
             }
             else if (line[x] == '.'){
+                foodCount++;
                 map[x][y] = new Food();
+            }
+            else if (line[x] == 'o'){
+
+                map[x][y] = new Fruit();
             }
             else{
                 map[x][y] = new Bloc(true);
@@ -232,15 +211,48 @@ void Labyrinthe::setDoor(bool open) {
 
 int Labyrinthe::checkFood(Hero &hero, FoodListener &listener) {
     //TODO overload == pour vérifier si Bloc instanceof Food
+    //TODO uytiliser futur fonction bloc->coordonnée pour parametre listener
     int blocX = hero.getPosition().x / BLOC_SIZE;
     int blocY = hero.getPosition().y / BLOC_SIZE;
-    if (instanceOf<Food>(map[blocX + 1][blocY + 1])){
+//    char* msg = new char[90];
+//    sprintf(msg,"blocX = %d blocY = %d ",blocX,blocY);
+//    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"msg",msg,window);
+    if (instanceOf<Food>(map[blocX + 1][blocY + 1]) && !( ((Food*)map[blocX + 1][blocY + 1])->isEaten() ) ){
+//        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"msg","bloc is food",window);
+        ((Food*)map[blocX + 1][blocY + 1])->setEaten(true);
+        foodCount--;
+        listener.foodEaten(((blocX+1) * BLOC_SIZE),((blocY+1) * BLOC_SIZE),foodCount);
         return PILL_EATEN;
     }
-    else if(instanceOf<Fruit>(map[blocX + 1][blocY + 1])) {
+    else if(instanceOf<Fruit>(map[blocX + 1][blocY + 1])&& !( ((Fruit*)map[blocX + 1][blocY + 1])->isEaten() ) ) {
+        ((Fruit*)map[blocX + 1][blocY + 1])->setEaten(true);
+        listener.foodEaten(((blocX+1) * BLOC_SIZE),((blocY+1) * BLOC_SIZE),foodCount);
         return FRUIT_EATEN;
     }
+    return 0;
 }
+
+int Labyrinthe::getPillCount() const {
+    return foodCount;
+}
+
+void Labyrinthe::setPillCount(int foodCount) {
+    Labyrinthe::foodCount = foodCount;
+}
+
+void Labyrinthe::incrementPillCount(int value) {
+    this->foodCount += value;
+}
+
+void Labyrinthe::startPhantomsVulnerability() {
+    for
+    std::thread t([]())
+
+}
+
+
+
+
 
 
 

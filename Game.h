@@ -9,22 +9,23 @@
 
 #include "Labyrinthe.h"
 #include "FoodListener.h"
-#include "Phantom.h"
 
-class Game : private FoodListener{
+
+class Game : public FoodListener{
 public:
-    Game(const std::string &labyrinthFilePath);
+    explicit Game(const std::string &labyrinthFilePath);
 
-    void foodEaten(SDL_Rect *foodPosition);
+    void foodEaten(int positionX, int positionY, int foodCount);
 
 
     void start();
 
 private:
     bool arrowPressed();
+    SDL_Window *window;
     std::unique_ptr<std::vector<SDL_Rect*>> emptyRects;
     std::unique_ptr<Hero> hero;
-    Phantom *phantoms[4];
+
     std::shared_ptr<Labyrinthe> labyrinthe;
 
 

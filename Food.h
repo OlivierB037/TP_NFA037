@@ -18,6 +18,10 @@ public :
 
     void setEaten(bool _eaten);
 
+    static const int FOOD_WIDTH {18};
+
+    static const int FOOD_HEIGHT {18};
+
 private:
     bool eaten;
 };

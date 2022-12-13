@@ -10,13 +10,15 @@
 #include "Image.h"
 #include "Perso.h"
 #include "Labyrinthe.h"
+#include "Game.h"
 
 class Mouvement {
 public:
 
-    static bool move(Side direction, Perso &perso, Labyrinthe const &terrain, SDL_Window *window);
-    static bool move(Side currentDirection, Side pendingDirection, Perso &perso, Labyrinthe const &terrain, SDL_Window *window);
+    static bool move(Side direction, Perso &perso, Labyrinthe &terrain, SDL_Window *window, Game &game);
+    static bool move(Side currentDirection, Side pendingDirection, Perso &perso, Labyrinthe &terrain, SDL_Window *window, Game &game);
 private:
+    template<typename T> static bool instanceOf(Perso *trgt);
     static bool collision(Position const &position, Side direction, Labyrinthe const &terrain);
 };
 

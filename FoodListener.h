@@ -10,7 +10,7 @@
 
 class FoodListener {
 public:
-    virtual void foodEaten(SDL_Rect *foodPosition) = 0;
+    virtual void foodEaten(int positionX, int positionY, int foodCount) = 0;
 
 };
 

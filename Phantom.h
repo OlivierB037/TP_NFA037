@@ -1,16 +1,35 @@
 //
-// Created by aperi on 30/11/2022.
+// Created by aperi on 13/12/2022.
 //
 
-#ifndef TP_01_PHANTOM_H
-#define TP_01_PHANTOM_H
+#ifndef TP_NFA037_PHANTOM_H
+#define TP_NFA037_PHANTOM_H
+#define VULNERABILITY_TIME 10000
 
+#include "Perso.h"
+#include "Vulnerability_Callback.h"
 
-class Phantom {
+class Phantom : public Perso, Vulnerability_Callback {
 public:
-    Phantom();
 
+    bool isVulnerable() const;
+
+    void startVulnerability();
+
+    bool isAlive() const;
+
+    void setAlive(bool alive);
+
+    void endVulnerability();
+
+    void setVulnerable(bool vulnerable);
+
+protected:
+    Phantom();
+private:
+    bool vulnerable;
+    bool alive;
 };
 
 
-#endif //TP_01_PHANTOM_H
+#endif //TP_NFA037_PHANTOM_H

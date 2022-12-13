@@ -8,7 +8,8 @@
 
 #include "Bloc.h"
 
-class Fruit : Bloc {
+class Fruit : public Bloc {
+public:
     Fruit();
 
     bool isCrossable() const;

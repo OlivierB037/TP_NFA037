@@ -1,17 +1,17 @@
 //
-// Created by aperi on 30/11/2022.
+// Created by aperi on 13/12/2022.
 //
 
-#ifndef TP_01_HERO_H
-#define TP_01_HERO_H
+#ifndef TP_NFA037_PHANTOMORANGE_H
+#define TP_NFA037_PHANTOMORANGE_H
 
 
-#include "Perso.h"
-class Hero :
-        public Perso
-{
+#include "Phantom.h"
+
+class PhantomOrange  : public Phantom{
 public:
-    Hero();
+    PhantomOrange();
+
     const SDL_Rect *getCurrentSprite() const;
 
     void setCurrentSprite(const SDL_Rect *currentSprite);
@@ -27,4 +27,4 @@ private:
 };
 
 
-#endif //TP_01_HERO_H
+#endif //TP_NFA037_PHANTOMORANGE_H
