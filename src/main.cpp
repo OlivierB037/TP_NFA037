@@ -4,7 +4,7 @@
 
 #include <cstdlib>
 
-#include "Game.h"
+#include "UI/Game.h"
 
 /*
  * Je n'ai pas réussi à dessiner un Pacman convaincant, et les fantomes allaient me prendre bien trop de temps, donc je suis revenu à la version utilisant des sprites
@@ -14,8 +14,11 @@ void showFormattedDialog(char *format,...);
 int main(int argumentCount, char* arguments[])
 {
     //TODO créer classe Window
+//    std::shared_ptr<Window> window = std::make_shared<Window>();
+    Window window;
+    window.init();
     Game game("terrain.txt");
-    game.start();
+    game.start(&window);
 
     return EXIT_SUCCESS;
 }

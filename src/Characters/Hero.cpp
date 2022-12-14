@@ -7,27 +7,23 @@
 #define HERO_START_POSITION_Y 9
 typedef Perso super;
 Hero::Hero()
-   : super(), image(CHARACTER_SIZE, CHARACTER_SIZE, 0, CHARACTER_SIZE,
+   : super(CHARACTER_SIZE, CHARACTER_SIZE, 0, CHARACTER_SIZE,
            CHARACTER_SIZE, 0, 0, 0,
            CHARACTER_SIZE, (CHARACTER_SIZE * 2), 0, (CHARACTER_SIZE * 2),
-           CHARACTER_SIZE, (3 * CHARACTER_SIZE), 0, (3 * CHARACTER_SIZE)),
-           currentSprite(&(image.getLeft1()))
+           CHARACTER_SIZE, (3 * CHARACTER_SIZE), 0, (3 * CHARACTER_SIZE))
+
 
 {
     Perso::setPosition(HERO_START_POSITION_X, HERO_START_POSITION_Y);
 }
 
-const SDL_Rect *Hero::getCurrentSprite() const{
-    return currentSprite;
-}
+
 
 void Hero::setCurrentSprite(const SDL_Rect *_currentSprite) {
-    currentSprite = _currentSprite;
+    super::setCurrentSprite(_currentSprite);
 }
 
-const Image &Hero::getImage() const {
-    return image;
-}
+
 
 void Hero::changeSprite(Side direction) {
 switch (direction) {

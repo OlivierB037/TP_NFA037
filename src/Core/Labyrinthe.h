@@ -10,17 +10,17 @@
 #define NO_WALL_NEXT 11111
 
 #include <map>
-#include "Bloc.h"
-#include "Position.h"
-#include "Image.h"
-#include "Door.h"
-#include "Hero.h"
-#include "FoodListener.h"
-#include "Phantom.h"
-#include "PhantomBlue.h"
-#include "PhantomRed.h"
-#include "PhantomPink.h"
-#include "PhantomOrange.h"
+#include "../Environment/Bloc.h"
+#include "../Characters/Position.h"
+#include "../UI/Sprites.h"
+#include "../Environment/Door.h"
+#include "../Characters/Hero.h"
+#include "../Callbacks/FoodListener.h"
+#include "../Characters/Phantom.h"
+#include "../Characters/PhantomBlue.h"
+#include "../Characters/PhantomRed.h"
+#include "../Characters/PhantomPink.h"
+#include "../Characters/PhantomOrange.h"
 
 class Labyrinthe {
 public:
@@ -55,6 +55,7 @@ public:
 
     void checkCollision(Hero &hero);
 
+    const std::map<int, Phantom *> &getPhantoms() const;
 
 private:
     void endPhantomsVulnerability();

@@ -3,11 +3,11 @@
 //
 
 #include "Labyrinthe.h"
-#include "Perso.h"
-#include "Labyrinth_Exception.h"
-#include "Wall.h"
-#include "Food.h"
-#include "Fruit.h"
+#include "../Characters/Perso.h"
+#include "../Labyrinth_Exception.h"
+#include "../Environment/Wall.h"
+#include "../Environment/Food.h"
+#include "../Environment/Fruit.h"
 #include <fstream>
 #include <iostream>
 
@@ -104,7 +104,13 @@ int Labyrinthe::getSideLimit(const Position &position, Side direction, SDL_Windo
 
 Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terrain_height, SDL_Window *_window):
         DIMENSION_X(terrain_width), DIMENSION_Y(terrain_height), door{nullptr, nullptr, nullptr, nullptr}
+
 {
+
+    phantoms.insert(std::make_pair(PhantomRed::PHANTOM_KEY,&phantomRed));
+    phantoms.insert(std::make_pair(PhantomPink::PHANTOM_KEY,&phantomPink));
+    phantoms.insert(std::make_pair(PhantomBlue::PHANTOM_KEY,&phantomBlue));
+    phantoms.insert(std::make_pair(PhantomOrange::PHANTOM_KEY,&phantomOrange));
     this->window = _window;
     std::ifstream fileReader {fileName} ;
     std::string line;
@@ -230,7 +236,8 @@ int Labyrinthe::checkFood(Hero &hero, FoodListener &listener) {
         std::thread t([&]() -> void {
             if(vulnerability_lock.try_lock()) {
                 this->startPhantomsVulnerability();
-                SDL_Delay(10000);
+//                SDL_Delay(Phantom::VULNERABILITY_TIME);
+                std::this_thread::sleep_for(std::chrono::milliseconds(Phantom::VULNERABILITY_TIME));
                 this->endPhantomsVulnerability();
                 vulnerability_lock.unlock();
                 return;
@@ -257,16 +264,26 @@ void Labyrinthe::incrementPillCount(int value) {
 //TODO rendre thread safe
 void Labyrinthe::startPhantomsVulnerability() {
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","phantoms are vulnerable",window);
+    for (auto p : phantoms) {
+        p.second->setVulnerable(true);
+    }
 
 
 }
 
 void Labyrinthe::endPhantomsVulnerability() {
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","phantoms are not vulnerable",window);
+    for (auto p : phantoms) {
+        p.second->setVulnerable(false);
+    }
 }
 
 void Labyrinthe::checkCollision(Hero &hero) {
 
+}
+
+const std::map<int, Phantom *> &Labyrinthe::getPhantoms() const {
+    return phantoms;
 }
 
 

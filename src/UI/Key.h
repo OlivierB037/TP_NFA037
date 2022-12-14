@@ -6,7 +6,7 @@
 #define TP_NFA037_KEY_H
 
 
-#include "Image.h"
+#include "Sprites.h"
 
 class Key {
 public:

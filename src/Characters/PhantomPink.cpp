@@ -4,27 +4,19 @@
 
 #include "PhantomPink.h"
 PhantomPink::PhantomPink()
-        :   Phantom(), image(72, 180, 108, 180,
+        :   Phantom(72, 180, 108, 180,
                            0, 180, 36, 180,
                            144, 180, 180, 180,
-                           216, 180, 252, 180),
-            currentSprite(&image.getLeft1())
+                           216, 180, 252, 180)
 
 {
-
-}
-
-const SDL_Rect *PhantomPink::getCurrentSprite() const {
-    return currentSprite;
+    this->setPosition(START_POSITION_X,START_POSITION_Y);
 }
 
 void PhantomPink::setCurrentSprite(const SDL_Rect *_currentSprite) {
     currentSprite = _currentSprite;
 }
 
-const Image &PhantomPink::getImage() const {
-    return image;
-}
 
 void PhantomPink::changeSprite(Side direction) {
 

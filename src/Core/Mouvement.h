@@ -7,10 +7,10 @@
 
 #define MOVING_SCALE 3
 #define SPRITE_RATE 3
-#include "Image.h"
-#include "Perso.h"
+#include "../UI/Sprites.h"
+#include "../Characters/Perso.h"
 #include "Labyrinthe.h"
-#include "Game.h"
+#include "../UI/Game.h"
 
 class Mouvement {
 public:

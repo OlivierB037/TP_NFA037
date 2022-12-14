@@ -13,17 +13,16 @@ class PhantomBlue  : public Phantom{
 public:
     PhantomBlue();
 
-    const SDL_Rect *getCurrentSprite() const;
+    inline static const int PHANTOM_KEY{15635};
+    inline static const int START_POSITION_X {9};
+    inline static const int START_POSITION_Y {513};
 
     void setCurrentSprite(const SDL_Rect *currentSprite);
-
-    const Image &getImage() const;
 
     void changeSprite(Side direction);
 
 private:
-    Image image;
-    SDL_Rect const *currentSprite;
+
 
 };
 

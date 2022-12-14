@@ -7,8 +7,9 @@
 
 
 
-#include "Labyrinthe.h"
-#include "FoodListener.h"
+#include "../Core/Labyrinthe.h"
+#include "../Callbacks/FoodListener.h"
+#include "Window.h"
 
 
 class Game : public FoodListener{
@@ -17,12 +18,11 @@ public:
 
     void foodEaten(int positionX, int positionY, int foodCount);
 
-
-    void start();
+    void start(Window *window);
 
 private:
     bool arrowPressed();
-    SDL_Window *window;
+
     std::unique_ptr<std::vector<SDL_Rect*>> emptyRects;
     std::unique_ptr<Hero> hero;
 

@@ -19,17 +19,17 @@ enum Side
 {
     LEFT, RIGHT, UP, DOWN, NONE
 };
-class Image
+class Sprites
 {
 public:
-    Image(int _left_1_x, int _left_1_y,
-          int _left_2_x, int _left_2_y,
-          int _right_1_x, int _right_1_y,
-          int _right_2_x, int _right_2_y,
-          int _up_1_x, int _up_1_y,
-          int _up_2_x, int _up_2_y,
-          int _down_1_x, int _down_1_y,
-          int _down_2_x, int _down_2_y);
+    Sprites(int _left_1_x, int _left_1_y,
+            int _left_2_x, int _left_2_y,
+            int _right_1_x, int _right_1_y,
+            int _right_2_x, int _right_2_y,
+            int _up_1_x, int _up_1_y,
+            int _up_2_x, int _up_2_y,
+            int _down_1_x, int _down_1_y,
+            int _down_2_x, int _down_2_y);
 
     const SDL_Rect &getLeft1() const;
 

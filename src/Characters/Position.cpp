@@ -3,7 +3,7 @@
 //
 
 #include "Position.h"
-#include "Logger.h"
+#include "../Logger.h"
 #include <iostream>
 #include <sstream>
 

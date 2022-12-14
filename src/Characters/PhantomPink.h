@@ -12,17 +12,15 @@ class PhantomPink  : public Phantom{
 public:
     PhantomPink();
 
-    const SDL_Rect *getCurrentSprite() const;
+    inline static const int PHANTOM_KEY{15634};
+    inline static const int START_POSITION_X {9};
+    inline static const int START_POSITION_Y {243};
 
     void setCurrentSprite(const SDL_Rect *currentSprite);
-
-    const Image &getImage() const;
 
     void changeSprite(Side direction);
 
 private:
-    Image image;
-    SDL_Rect const *currentSprite;
 
 };
 

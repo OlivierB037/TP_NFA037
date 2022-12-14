@@ -49,152 +49,159 @@ cmake_ninja_workdir = C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/cmake-
 
 build cmake_object_order_depends_target_TP_NFA037: phony || CMakeFiles/TP_NFA037.dir
 
-build CMakeFiles/TP_NFA037.dir/main.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/main.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\main.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/main.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/main.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\main.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src
 
-build CMakeFiles/TP_NFA037.dir/Position.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Position.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Position.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Characters/Position.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Characters/Position.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Characters\Position.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Characters
 
-build CMakeFiles/TP_NFA037.dir/Hero.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Hero.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Hero.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Characters/Hero.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Characters/Hero.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Characters\Hero.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Characters
 
-build CMakeFiles/TP_NFA037.dir/Perso.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Perso.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Perso.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Characters/Perso.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Characters/Perso.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Characters\Perso.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Characters
 
-build CMakeFiles/TP_NFA037.dir/PhantomBlue.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/PhantomBlue.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\PhantomBlue.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Characters/PhantomBlue.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Characters/PhantomBlue.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Characters\PhantomBlue.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Characters
 
-build CMakeFiles/TP_NFA037.dir/Image.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Image.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Image.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/UI/Sprites.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/UI/Sprites.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\UI\Sprites.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\UI
 
-build CMakeFiles/TP_NFA037.dir/Mouvement.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Mouvement.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Mouvement.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Core/Mouvement.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Core/Mouvement.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Core\Mouvement.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Core
 
-build CMakeFiles/TP_NFA037.dir/Labyrinthe.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Labyrinthe.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Labyrinthe.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Core/Labyrinthe.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Core/Labyrinthe.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Core\Labyrinthe.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Core
 
-build CMakeFiles/TP_NFA037.dir/Bloc.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Bloc.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Bloc.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Environment/Bloc.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Environment/Bloc.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Environment\Bloc.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Environment
 
-build CMakeFiles/TP_NFA037.dir/Logger.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Logger.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Logger.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Logger.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Logger.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Logger.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src
 
-build CMakeFiles/TP_NFA037.dir/Key.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Key.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Key.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/UI/Key.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/UI/Key.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\UI\Key.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\UI
 
-build CMakeFiles/TP_NFA037.dir/Arrows.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Arrows.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Arrows.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/UI/Arrows.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/UI/Arrows.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\UI\Arrows.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\UI
 
-build CMakeFiles/TP_NFA037.dir/Wall.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Wall.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Wall.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Environment/Wall.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Environment/Wall.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Environment\Wall.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Environment
 
-build CMakeFiles/TP_NFA037.dir/Door.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Door.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Door.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Environment/Door.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Environment/Door.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Environment\Door.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Environment
 
-build CMakeFiles/TP_NFA037.dir/Food.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Food.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Food.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Environment/Food.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Environment/Food.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Environment\Food.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Environment
 
-build CMakeFiles/TP_NFA037.dir/Game.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Game.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Game.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/UI/Game.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/UI/Game.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\UI\Game.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\UI
 
-build CMakeFiles/TP_NFA037.dir/Fruit.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Fruit.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Fruit.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Environment/Fruit.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Environment/Fruit.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Environment\Fruit.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Environment
 
-build CMakeFiles/TP_NFA037.dir/Phantom.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/Phantom.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\Phantom.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Characters/Phantom.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Characters/Phantom.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Characters\Phantom.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Characters
 
-build CMakeFiles/TP_NFA037.dir/PhantomRed.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/PhantomRed.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\PhantomRed.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Characters/PhantomRed.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Characters/PhantomRed.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Characters\PhantomRed.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Characters
 
-build CMakeFiles/TP_NFA037.dir/PhantomPink.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/PhantomPink.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\PhantomPink.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Characters/PhantomPink.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Characters/PhantomPink.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Characters\PhantomPink.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Characters
 
-build CMakeFiles/TP_NFA037.dir/PhantomOrange.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/PhantomOrange.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\PhantomOrange.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Characters/PhantomOrange.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Characters/PhantomOrange.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Characters\PhantomOrange.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Characters
+
+build CMakeFiles/TP_NFA037.dir/src/UI/Window.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/UI/Window.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\UI\Window.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
+  OBJECT_DIR = CMakeFiles\TP_NFA037.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\UI
 
 
 # =============================================================================
@@ -204,7 +211,7 @@ build CMakeFiles/TP_NFA037.dir/PhantomOrange.cpp.obj: CXX_COMPILER__TP_NFA037_De
 #############################################
 # Link the executable TP_NFA037.exe
 
-build TP_NFA037.exe: CXX_EXECUTABLE_LINKER__TP_NFA037_Debug CMakeFiles/TP_NFA037.dir/main.cpp.obj CMakeFiles/TP_NFA037.dir/Position.cpp.obj CMakeFiles/TP_NFA037.dir/Hero.cpp.obj CMakeFiles/TP_NFA037.dir/Perso.cpp.obj CMakeFiles/TP_NFA037.dir/PhantomBlue.cpp.obj CMakeFiles/TP_NFA037.dir/Image.cpp.obj CMakeFiles/TP_NFA037.dir/Mouvement.cpp.obj CMakeFiles/TP_NFA037.dir/Labyrinthe.cpp.obj CMakeFiles/TP_NFA037.dir/Bloc.cpp.obj CMakeFiles/TP_NFA037.dir/Logger.cpp.obj CMakeFiles/TP_NFA037.dir/Key.cpp.obj CMakeFiles/TP_NFA037.dir/Arrows.cpp.obj CMakeFiles/TP_NFA037.dir/Wall.cpp.obj CMakeFiles/TP_NFA037.dir/Door.cpp.obj CMakeFiles/TP_NFA037.dir/Food.cpp.obj CMakeFiles/TP_NFA037.dir/Game.cpp.obj CMakeFiles/TP_NFA037.dir/Fruit.cpp.obj CMakeFiles/TP_NFA037.dir/Phantom.cpp.obj CMakeFiles/TP_NFA037.dir/PhantomRed.cpp.obj CMakeFiles/TP_NFA037.dir/PhantomPink.cpp.obj CMakeFiles/TP_NFA037.dir/PhantomOrange.cpp.obj | C$:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2main.a C$:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2.dll.a
+build TP_NFA037.exe: CXX_EXECUTABLE_LINKER__TP_NFA037_Debug CMakeFiles/TP_NFA037.dir/src/main.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/Position.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/Hero.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/Perso.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/PhantomBlue.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Sprites.cpp.obj CMakeFiles/TP_NFA037.dir/src/Core/Mouvement.cpp.obj CMakeFiles/TP_NFA037.dir/src/Core/Labyrinthe.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Bloc.cpp.obj CMakeFiles/TP_NFA037.dir/src/Logger.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Key.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Arrows.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Wall.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Door.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Food.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Game.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Fruit.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/Phantom.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/PhantomRed.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/PhantomPink.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/PhantomOrange.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Window.cpp.obj | C$:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2main.a C$:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2.dll.a
   FLAGS = -g
   LINK_FLAGS = -static-libstdc++
   LINK_LIBRARIES = -lmingw32  -mwindows  C:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2main.a  C:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
