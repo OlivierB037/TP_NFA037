@@ -227,7 +227,18 @@ int Labyrinthe::checkFood(Hero &hero, FoodListener &listener) {
     else if(instanceOf<Fruit>(map[blocX + 1][blocY + 1])&& !( ((Fruit*)map[blocX + 1][blocY + 1])->isEaten() ) ) {
         ((Fruit*)map[blocX + 1][blocY + 1])->setEaten(true);
         listener.foodEaten(((blocX+1) * BLOC_SIZE),((blocY+1) * BLOC_SIZE),foodCount);
+        std::thread t([&]() -> void {
+            if(vulnerability_lock.try_lock()) {
+                this->startPhantomsVulnerability();
+                SDL_Delay(10000);
+                this->endPhantomsVulnerability();
+                vulnerability_lock.unlock();
+                return;
+            }
+        });
+        t.detach();
         return FRUIT_EATEN;
+
     }
     return 0;
 }
@@ -243,10 +254,18 @@ void Labyrinthe::setPillCount(int foodCount) {
 void Labyrinthe::incrementPillCount(int value) {
     this->foodCount += value;
 }
-
+//TODO rendre thread safe
 void Labyrinthe::startPhantomsVulnerability() {
-    for
-    std::thread t([]())
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","phantoms are vulnerable",window);
+
+
+}
+
+void Labyrinthe::endPhantomsVulnerability() {
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","phantoms are not vulnerable",window);
+}
+
+void Labyrinthe::checkCollision(Hero &hero) {
 
 }
 

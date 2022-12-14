@@ -53,9 +53,11 @@ public:
 
     void incrementPillCount(int value = 1);
 
+    void checkCollision(Hero &hero);
 
 
 private:
+    void endPhantomsVulnerability();
     void startPhantomsVulnerability();
     PhantomBlue phantomBlue;
     PhantomRed phantomRed;
@@ -64,6 +66,7 @@ private:
     //TODO réflechir classe phantoms unique ou mettre les 4 differents dans la map
     //TODO ajouter clé de la map aux classes phantomes
     std::map<int,Phantom*> phantoms;
+    std::mutex vulnerability_lock;
     Bloc ***map;
     Bloc *door[4];
     template<typename T> bool instanceOf(Bloc *trgt);
