@@ -31,6 +31,11 @@ public:
           int _down_1_x, int _down_1_y,
           int _down_2_x, int _down_2_y);
 
+    bool operator==(const Image &rhs) const;
+
+    bool operator!=(const Image &rhs) const;
+
+
     const SDL_Rect &getLeft1() const;
 
     const SDL_Rect &getLeft2() const;

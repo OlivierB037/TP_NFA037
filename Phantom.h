@@ -11,6 +11,9 @@
 
 class Phantom : public Perso, Vulnerability_Callback {
 public:
+    bool operator==(const Phantom &rhs) const;
+
+    bool operator!=(const Phantom &rhs) const;
 
     bool isVulnerable() const;
 
@@ -18,11 +21,11 @@ public:
 
     bool isAlive() const;
 
-    void setAlive(bool alive);
+    void setAlive(bool _alive);
 
     void endVulnerability();
 
-    void setVulnerable(bool vulnerable);
+    void setVulnerable(bool _vulnerable);
 
 protected:
     Phantom();

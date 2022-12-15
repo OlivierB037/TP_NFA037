@@ -30,12 +30,26 @@ public:
 
     //TODO créer fonctions numero de bloc <-> coordonnées
     //TODO créer template instanceOf
+    /*
+     * constructeurs
+     */
+    Labyrinthe(const std::string& fileName, int terrain_width, int terrain_height, SDL_Window *_window);
+
+    Labyrinthe(const Labyrinthe& labyrinthe);
+
     Labyrinthe() = delete;
 
-    const int DIMENSION_X;
-    const int DIMENSION_Y;
+    bool operator==(const Labyrinthe &rhs) const;
 
-    Labyrinthe(const std::string& fileName, int terrain_width, int terrain_height, SDL_Window *_window);
+    bool operator!=(const Labyrinthe &rhs) const;
+
+    Labyrinthe& operator=(const Labyrinthe& rhs);
+
+    ~Labyrinthe();
+
+    Bloc *getBloc(Position _position);
+
+    Position getBlocCoordinates(int blocX, int blocY);
 
     Bloc const* getSideBloc(Position const &position, Side direction );
 
@@ -53,22 +67,40 @@ public:
 
     void incrementPillCount(int value = 1);
 
+    void checkCollision(Hero &hero, Side &direction);
 
+    int getDimensionX() const;
+
+    int getDimensionY() const;
 
 private:
+    //TODO réflechir classe phantoms unique ou mettre les 4 differents dans la map
+    //TODO ajouter clé de la map aux classes phantomes
+
+    /* phantomes */
+    void endPhantomsVulnerability();
     void startPhantomsVulnerability();
     PhantomBlue phantomBlue;
     PhantomRed phantomRed;
     PhantomPink phantomPink;
     PhantomOrange phantomOrange;
-    //TODO réflechir classe phantoms unique ou mettre les 4 differents dans la map
-    //TODO ajouter clé de la map aux classes phantomes
     std::map<int,Phantom*> phantoms;
+
+    /*mutex de synchronisation du thread gérant l'invincibilité après avoir mangé un fruit */
+    std::mutex vulnerability_lock;
+
+    /*éléments du labyrinthe */
     Bloc ***map;
     Bloc *door[4];
-    template<typename T> bool instanceOf(Bloc *trgt);
-    SDL_Window *window;
     int foodCount;
+    int DIMENSION_X;
+    int DIMENSION_Y;
+
+    template<typename T> bool instanceOf(Bloc *trgt);
+
+    /* window sert au deboguage (affichage de boites de dialogue)*/
+    SDL_Window *window;
+
 //    template<typename Lval, typename Rval>
 //    bool operator==(Lval &lval, Rval&rval)
 

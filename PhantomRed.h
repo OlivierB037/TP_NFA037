@@ -6,11 +6,16 @@
 #define TP_NFA037_PHANTOMRED_H
 
 
+
 #include "Phantom.h"
 
 class PhantomRed  : public Phantom{
 public:
     PhantomRed();
+
+    bool operator==(const PhantomRed &rhs) const;
+
+    bool operator!=(const PhantomRed &rhs) const;
 
     const SDL_Rect *getCurrentSprite() const;
 
@@ -20,11 +25,13 @@ public:
 
     void changeSprite(Side direction);
 
+    const Position& getStartingPosition() const;
+
 private:
     Image image;
     SDL_Rect const *currentSprite;
-    bool vulnerable;
-    bool alive;
+    const Position startingPosition;
+
 
 };
 

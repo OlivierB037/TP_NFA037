@@ -17,7 +17,9 @@ protected:
 
     Perso();
 public:
+    bool operator==(const Perso &rhs) const;
 
+    bool operator!=(const Perso &rhs) const;
 
     void setPosition(int _x, int _y);
 
@@ -34,11 +36,13 @@ public:
 
     void incrementStepCount();
 
-    void setStepCount(int stepCount);
+    void setStepCount(int _stepCount);
 
     virtual const SDL_Rect *getCurrentSprite() const = 0;
 
     virtual void setCurrentSprite(const SDL_Rect *currentSprite) = 0;
+
+    virtual const Position& getStartingPosition() const = 0;
 
     inline static const char* sprite_fileName{ "persos24.bmp" };
     inline static const int MAXIMUM_MOTION_SCALE{6};

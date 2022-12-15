@@ -14,8 +14,8 @@ int Perso::getStepCount() const {
     return stepCount;
 }
 
-void Perso::setStepCount(int stepCount) {
-    Perso::stepCount = stepCount;
+void Perso::setStepCount(int _stepCount) {
+    Perso::stepCount = _stepCount;
 }
 
 
@@ -46,6 +46,22 @@ void Perso::incrementStepCount() {
 //    if (stepCount == SPRITE_RATE ){
 //        stepCount = 1;
 //    }
+}
+
+bool Perso::operator==(const Perso &rhs) const {
+    return position.x == rhs.getPosition().x &&
+            position.y == rhs.getPosition().y &&
+            position.w == rhs.getPosition().w &&
+            position.h == rhs.getPosition().h &&
+           stepCount == rhs.stepCount;
+}
+
+bool Perso::operator!=(const Perso &rhs) const {
+    return position.x != rhs.getPosition().x ||
+           position.y != rhs.getPosition().y ||
+           position.w != rhs.getPosition().w ||
+           position.h != rhs.getPosition().h ||
+           stepCount != rhs.stepCount;
 }
 
 

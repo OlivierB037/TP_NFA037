@@ -9,7 +9,10 @@ class Position : public SDL_Rect {
 public:
     Position(int x, int y);
     Position();
-
+    bool operator ==(const SDL_Rect &rhs);
+    bool operator ==(const Position& rhs);
+    bool operator !=(const SDL_Rect &rhs);
+    bool operator !=(const Position& rhs);
     int getX() const noexcept;
     int getY() const noexcept;
     void setX(int _x);

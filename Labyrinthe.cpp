@@ -14,6 +14,9 @@
 #include <SDL.h>
 #include <thread>
 
+/*
+ * vérifie si le Bloc trgt est une instance de T
+ */
 template<typename T>
 bool Labyrinthe::instanceOf(Bloc *trgt)
 {
@@ -29,6 +32,10 @@ Bloc const *Labyrinthe::getSideBloc(const Position &position, Side direction) {
     }
 }
 
+/*
+ * renvoie la valeur X ou Y (selon la direction) du mur au bloc suivant ou une
+ * constante si le chemin est libre
+ */
 int Labyrinthe::getSideLimit(const Position &position, Side direction, SDL_Window *window) const {
     switch (direction) {// inclure constante de retour indiquant le nombre de pixel manquants pour pouvoir tourner
         case LEFT: {
@@ -208,7 +215,10 @@ void Labyrinthe::setDoor(bool open) {
         door[i]->setCrossable(open);
     }
 }
-
+/*
+     * vérifie si la position de pacman correspond à la position d'un "Food"
+     * Le résultat est envoyé à la classe Game via FoodListener
+     */
 int Labyrinthe::checkFood(Hero &hero, FoodListener &listener) {
     //TODO overload == pour vérifier si Bloc instanceof Food
     //TODO uytiliser futur fonction bloc->coordonnée pour parametre listener
@@ -227,7 +237,22 @@ int Labyrinthe::checkFood(Hero &hero, FoodListener &listener) {
     else if(instanceOf<Fruit>(map[blocX + 1][blocY + 1])&& !( ((Fruit*)map[blocX + 1][blocY + 1])->isEaten() ) ) {
         ((Fruit*)map[blocX + 1][blocY + 1])->setEaten(true);
         listener.foodEaten(((blocX+1) * BLOC_SIZE),((blocY+1) * BLOC_SIZE),foodCount);
+        /*
+         * demarrage de l'invincibilité, l'usage du mutex et de try_lock permet de ne pas relancer l'ivincibilité une
+         * deuxième fois si le joueur mange un fruit pendant qu'un autre est déja actif
+         */
+        std::thread t([&]() -> void {
+            if(vulnerability_lock.try_lock()) {
+                this->startPhantomsVulnerability();
+                SDL_Delay(10000);
+                this->endPhantomsVulnerability();
+                vulnerability_lock.unlock();
+                return;
+            }
+        });
+        t.detach();
         return FRUIT_EATEN;
+
     }
     return 0;
 }
@@ -243,12 +268,158 @@ void Labyrinthe::setPillCount(int foodCount) {
 void Labyrinthe::incrementPillCount(int value) {
     this->foodCount += value;
 }
-
+//TODO rendre thread safe
 void Labyrinthe::startPhantomsVulnerability() {
-    for
-    std::thread t([]())
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","phantoms are vulnerable",window);
+
 
 }
+
+void Labyrinthe::endPhantomsVulnerability() {
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","phantoms are not vulnerable",window);
+}
+
+void Labyrinthe::checkCollision(Hero &hero, Side &direction) {
+
+}
+
+Labyrinthe::~Labyrinthe() {
+    if (door != nullptr){
+        delete[] *door;
+    }
+    if (map != nullptr){
+        for (int x = 0; x < DIMENSION_X; ++x) {
+            for (int y = 0; y < DIMENSION_Y; ++y) {
+                if (map[x][y] != nullptr) {
+                    delete map[x][y];
+
+                }
+
+            }
+        }
+    }
+
+}
+
+bool Labyrinthe::operator==(const Labyrinthe &rhs) const {
+    return DIMENSION_X == rhs.DIMENSION_X &&
+           DIMENSION_Y == rhs.DIMENSION_Y &&
+           phantomBlue == rhs.phantomBlue &&
+           phantomRed == rhs.phantomRed &&
+           phantomPink == rhs.phantomPink &&
+           phantomOrange == rhs.phantomOrange &&
+           phantoms == rhs.phantoms &&
+           map == rhs.map &&
+           door[0] == rhs.door[0] &&
+           door[1] == rhs.door[1] &&
+           door[2] == rhs.door[2] &&
+           door[3] == rhs.door[3] &&
+           foodCount == rhs.foodCount &&
+           window == rhs.window;
+}
+
+bool Labyrinthe::operator!=(const Labyrinthe &rhs) const {
+    return DIMENSION_X != rhs.DIMENSION_X ||
+           DIMENSION_Y != rhs.DIMENSION_Y ||
+           phantomBlue != rhs.phantomBlue ||
+           phantomRed != rhs.phantomRed ||
+           phantomPink != rhs.phantomPink ||
+           phantomOrange != rhs.phantomOrange ||
+           phantoms != rhs.phantoms ||
+           map != rhs.map ||
+           door[0] != rhs.door[0] ||
+           door[1] != rhs.door[1] ||
+           door[2] != rhs.door[2] ||
+           door[3] != rhs.door[3] ||
+           foodCount != rhs.foodCount ||
+           window != rhs.window;
+}
+
+Labyrinthe &Labyrinthe::operator=(const Labyrinthe &rhs) {
+    if (*this == rhs){
+        return *this;
+    }
+    if (rhs.DIMENSION_X == DIMENSION_X && rhs.DIMENSION_Y == DIMENSION_Y) {
+        for (int x = 0; x < DIMENSION_X; ++x) {
+            for (int y = 0; y < DIMENSION_Y; ++y) {
+                if (map[x][y] != nullptr) {
+                    delete map[x][y];
+
+                }
+                map[x][y] = rhs.map[x][y];
+            }
+        }
+    }
+    else{
+        DIMENSION_X = rhs.DIMENSION_X;
+        DIMENSION_Y = rhs.DIMENSION_Y;
+        delete map;
+        map = new Bloc**[DIMENSION_X];
+
+        for (int x = 0; x < DIMENSION_X; ++x) {
+            map[x] = new Bloc*[DIMENSION_Y];
+            for (int y = 0; y < DIMENSION_Y; ++y) {
+
+                map[x][y] = rhs.map[x][y];
+            }
+        }
+
+    }
+
+
+    for (int i = 0; i < 4; ++i) {
+        if(door[i] != nullptr) {
+            delete door[i];
+        }
+        door[i] = new Door(rhs.door[i]);
+    }
+    /*
+     * dans le cas ou un labyrinthe serait réaffecté (peu probable) les phantomes restent les mêmes
+     * ils seront probablement déplacés dans Game avec le Hero ou faits Singletons
+     */
+    foodCount = rhs.foodCount;
+
+
+
+}
+
+int Labyrinthe::getDimensionX() const {
+    return DIMENSION_X;
+}
+
+int Labyrinthe::getDimensionY() const {
+    return DIMENSION_Y;
+}
+
+Labyrinthe::Labyrinthe(const Labyrinthe& labyrinthe)
+: phantomRed(labyrinthe.phantomRed), phantomBlue(labyrinthe.phantomBlue),
+    phantomPink(labyrinthe.phantomPink), phantomOrange(labyrinthe.phantomOrange),
+    phantoms(labyrinthe.phantoms), foodCount(labyrinthe.foodCount),DIMENSION_X(labyrinthe.DIMENSION_X),
+    DIMENSION_Y(labyrinthe.DIMENSION_Y), door{nullptr,nullptr,nullptr,nullptr}, map(nullptr),window(nullptr)
+{
+    map = new Bloc**[DIMENSION_X];
+
+    for (int x = 0; x < DIMENSION_X; ++x) {
+        map[x] = new Bloc*[DIMENSION_Y];
+        for (int y = 0; y < DIMENSION_Y; ++y) {
+
+            map[x][y] = labyrinthe.map[x][y];
+        }
+    }
+    for (int i = 0; i < 4; ++i) {
+        door[i] = new Door(labyrinthe.door[i]);
+    }
+    window = labyrinthe.window;
+}
+
+Position Labyrinthe::getBlocCoordinates(int blocX, int blocY) {
+    return Position(blocX * BLOC_SIZE, blocY * BLOC_SIZE);
+}
+
+Bloc *Labyrinthe::getBloc(Position _position) {
+    return map[_position.x/CHARACTER_SIZE][_position.y / BLOC_SIZE];
+}
+
 
 
 

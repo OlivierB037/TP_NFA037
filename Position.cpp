@@ -55,6 +55,32 @@ void Position::incrementY(int value) {
     this->y+=value;
 }
 
+bool Position::operator==(const SDL_Rect &rhs) {
+    return x == rhs.x && y == rhs.y &&
+           w == rhs.w && h == rhs.h;
+}
+
+bool Position::operator==(const Position& rhs) {
+
+    return x == rhs.x &&
+            y == rhs.y &&
+            w == rhs.w &&
+            h == rhs.h;
+}
+
+bool Position::operator!=(const SDL_Rect &rhs) {
+
+    return x != rhs.x || y != rhs.y ||
+           w != rhs.w || h != rhs.h;
+}
+
+bool Position::operator!=(const Position &rhs) {
+    return x != rhs.x ||
+           y != rhs.y ||
+           w != rhs.w ||
+           h != rhs.h;
+}
+
 
 
 

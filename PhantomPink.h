@@ -12,6 +12,10 @@ class PhantomPink  : public Phantom{
 public:
     PhantomPink();
 
+    bool operator==(const PhantomPink &rhs) const;
+
+    bool operator!=(const PhantomPink &rhs) const;
+
     const SDL_Rect *getCurrentSprite() const;
 
     void setCurrentSprite(const SDL_Rect *currentSprite);
@@ -20,9 +24,12 @@ public:
 
     void changeSprite(Side direction);
 
+    const Position& getStartingPosition() const;
+
 private:
     Image image;
     SDL_Rect const *currentSprite;
+    const Position startingPosition;
 
 };
 

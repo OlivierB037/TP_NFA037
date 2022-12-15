@@ -3,18 +3,17 @@
 //
 
 #include "Hero.h"
-#define HERO_START_POSITION_X 450
-#define HERO_START_POSITION_Y 9
+
 typedef Perso super;
 Hero::Hero()
    : super(), image(CHARACTER_SIZE, CHARACTER_SIZE, 0, CHARACTER_SIZE,
            CHARACTER_SIZE, 0, 0, 0,
            CHARACTER_SIZE, (CHARACTER_SIZE * 2), 0, (CHARACTER_SIZE * 2),
            CHARACTER_SIZE, (3 * CHARACTER_SIZE), 0, (3 * CHARACTER_SIZE)),
-           currentSprite(&(image.getLeft1()))
+           currentSprite(&(image.getLeft1())), startingPosition(243,189)
 
 {
-    Perso::setPosition(HERO_START_POSITION_X, HERO_START_POSITION_Y);
+    Perso::setPosition(startingPosition.x, startingPosition.y);
 }
 
 const SDL_Rect *Hero::getCurrentSprite() const{
@@ -66,4 +65,8 @@ switch (direction) {
     case NONE:
         break;
 }
+}
+
+const Position &Hero::getStartingPosition() const {
+    return startingPosition;
 }

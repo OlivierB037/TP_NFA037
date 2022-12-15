@@ -112,6 +112,10 @@ bool Mouvement::move(Side direction, Perso &perso, Labyrinthe &terrain, SDL_Wind
         default:
             break;
     }
+    /*
+     * vérifie si la position de pacman correspond à la position d'un "Food"
+     * Le résultat est envoyé à un callback (interface FoodListener) implémenté par la classe Game
+     */
     if (instanceOf<Hero>(&perso)) {
 //        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","pero is instance of hero",window);
         switch (terrain.checkFood(dynamic_cast<Hero &>(perso), game)) {

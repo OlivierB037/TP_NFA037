@@ -20,9 +20,12 @@ public:
 
     void changeSprite(Side direction);
 
+    const Position& getStartingPosition() const;
+
 private:
     Image image;
     SDL_Rect const *currentSprite;
+    Position startingPosition;
 
 };
 
