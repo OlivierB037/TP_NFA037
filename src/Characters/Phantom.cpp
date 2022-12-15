@@ -35,6 +35,26 @@ void Phantom::setAlive(bool _alive) {
     Phantom::alive = _alive;
 }
 
+bool Phantom::operator==(const Phantom &rhs) const {
+    return static_cast<const Perso &>(*this) == static_cast<const Perso &>(rhs) &&
+           vulnerable == rhs.vulnerable &&
+           alive == rhs.alive;
+}
+
+bool Phantom::operator!=(const Phantom &rhs) const {
+    return static_cast<const Perso &>(*this) != static_cast<const Perso &>(rhs) ||
+           vulnerable != rhs.vulnerable ||
+           alive != rhs.alive;
+}
+
+template<typename T>
+bool Phantom::instanceOf(Phantom *trgt) {
+    return dynamic_cast<T*>(trgt);
+}
+
+
+
+
 
 
 

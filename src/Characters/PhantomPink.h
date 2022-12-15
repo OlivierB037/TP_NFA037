@@ -13,14 +13,19 @@ public:
     PhantomPink();
 
     inline static const int PHANTOM_KEY{15634};
-    inline static const int START_POSITION_X {9};
-    inline static const int START_POSITION_Y {243};
+
+    bool operator==(const PhantomPink &rhs) const;
+
+    bool operator!=(const PhantomPink &rhs) const;
 
     void setCurrentSprite(const SDL_Rect *currentSprite);
 
     void changeSprite(Side direction);
 
+    const Position& getStartingPosition() const;
+
 private:
+    const Position startingPosition;
 
 };
 

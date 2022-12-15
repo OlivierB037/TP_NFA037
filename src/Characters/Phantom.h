@@ -12,6 +12,13 @@
 class Phantom : public Perso{
 public:
 
+    //TODO ajouter méthode abstraite equals pour identifier les phantomes
+    //TODO envisager de faire des Singleton a partir des sous-classes de phantom
+
+    bool operator==(const Phantom &rhs) const;
+
+    bool operator!=(const Phantom &rhs) const;
+
 
 
     inline static const int VULNERABILITY_TIME {10000};
@@ -30,6 +37,7 @@ protected:
             int _down_2_x, int _down_2_y);
     Phantom() = delete;
 private:
+    template<typename T> static bool instanceOf(Phantom *trgt);
     bool vulnerable;
     bool alive;
 };

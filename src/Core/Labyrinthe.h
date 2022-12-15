@@ -37,6 +37,12 @@ public:
 
     Labyrinthe(const std::string& fileName, int terrain_width, int terrain_height, SDL_Window *_window);
 
+    ~Labyrinthe();
+
+    Bloc *getBloc(Position _position);
+
+    Position getBlocCoordinates(int blocX, int blocY);
+
     Bloc const* getSideBloc(Position const &position, Side direction );
 
     int getSideLimit(Position const &position,Side direction,SDL_Window *window) const;
@@ -60,19 +66,28 @@ public:
 private:
     void endPhantomsVulnerability();
     void startPhantomsVulnerability();
+    //TODO réflechir classe phantoms unique ou mettre les 4 differents dans la map
+    //TODO déplacer fantomes dans Game et ne conserver que le tableau de pointeurs
+
+    /* phantomes */
     PhantomBlue phantomBlue;
     PhantomRed phantomRed;
     PhantomPink phantomPink;
     PhantomOrange phantomOrange;
-    //TODO réflechir classe phantoms unique ou mettre les 4 differents dans la map
-    //TODO ajouter clé de la map aux classes phantomes
     std::map<int,Phantom*> phantoms;
+
+    /*mutex de synchronisation du thread gérant l'invincibilité après avoir mangé un fruit */
     std::mutex vulnerability_lock;
+
+    /*éléments du labyrinthe */
     Bloc ***map;
     Bloc *door[4];
-    template<typename T> bool instanceOf(Bloc *trgt);
-    SDL_Window *window;
     int foodCount;
+
+    template<typename T> bool instanceOf(Bloc *trgt);
+    /* window sert au deboguage*/
+    SDL_Window *window;
+
 //    template<typename Lval, typename Rval>
 //    bool operator==(Lval &lval, Rval&rval)
 

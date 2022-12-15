@@ -29,6 +29,9 @@ protected:
     Sprites image;
 public:
 
+    bool operator==(const Perso &rhs) const;
+
+    bool operator!=(const Perso &rhs) const;
 
     void setPosition(int _x, int _y);
 
@@ -50,6 +53,8 @@ public:
     const SDL_Rect *getCurrentSprite() const;
 
     virtual void setCurrentSprite(const SDL_Rect *_currentSprite);
+
+    virtual const Position& getStartingPosition() const = 0;
 
     inline static const char* sprite_fileName{ "resources/persos24.bmp" };
     inline static const int MAXIMUM_MOTION_SCALE{6};

@@ -286,6 +286,30 @@ const std::map<int, Phantom *> &Labyrinthe::getPhantoms() const {
     return phantoms;
 }
 
+Labyrinthe::~Labyrinthe() {
+    if (door != nullptr){
+        delete[] *door;
+    }
+    if (map != nullptr){
+        for (int x = 0; x < DIMENSION_X; ++x) {
+            for (int y = 0; y < DIMENSION_Y; ++y) {
+                if (map[x][y] != nullptr) {
+                    delete map[x][y];
+
+                }
+
+            }
+        }
+    }
+}
+
+Position Labyrinthe::getBlocCoordinates(int blocX, int blocY) {
+    return Position(blocX * BLOC_SIZE, blocY * BLOC_SIZE);
+}
+
+Bloc *Labyrinthe::getBloc(Position _position) {
+    return map[_position.x/CHARACTER_SIZE][_position.y / BLOC_SIZE];
+}
 
 
 

@@ -11,14 +11,14 @@ bool Mouvement::instanceOf(Perso *trgt) {
     return dynamic_cast<T*>(trgt);
 }
 
-bool Mouvement::move(Side direction, Perso &perso, Labyrinthe &terrain, SDL_Window *window, Game &game) {
+bool Mouvement::move(Side direction, Perso &perso, Labyrinthe &labyrinthe, SDL_Window *window, Game &game) {
 
     switch (direction) {
         case LEFT: {
 //            char* msg = new char[90];
 //            sprintf(msg," left up corner = %d right up corner = %d",perso.getPosition().x,(perso.getPosition().x + (CHARACTER_SIZE -1 )));
 //            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message",msg,window);
-            int leftXLimit = terrain.getSideLimit(perso.getPosition(), direction, window);
+            int leftXLimit = labyrinthe.getSideLimit(perso.getPosition(), direction, window);
 
 
             if (leftXLimit == -1){
@@ -40,7 +40,7 @@ bool Mouvement::move(Side direction, Perso &perso, Labyrinthe &terrain, SDL_Wind
             break;
         }
         case RIGHT: {
-            int rightXLimit = terrain.getSideLimit(perso.getPosition(), direction, window);
+            int rightXLimit = labyrinthe.getSideLimit(perso.getPosition(), direction, window);
             if (rightXLimit == -1){
 //                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","what are you doing inside a crossable ?",window);
                 return false;
@@ -70,7 +70,7 @@ bool Mouvement::move(Side direction, Perso &perso, Labyrinthe &terrain, SDL_Wind
 
         }
         case UP:{
-            int upYLimit = terrain.getSideLimit(perso.getPosition(), direction, window);
+            int upYLimit = labyrinthe.getSideLimit(perso.getPosition(), direction, window);
             if (upYLimit == -1){
 //                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","what are you doing inside a crossable ?",window);
                 return false;
@@ -89,7 +89,7 @@ bool Mouvement::move(Side direction, Perso &perso, Labyrinthe &terrain, SDL_Wind
             break;
         }
         case DOWN:{
-            int downYLimit = terrain.getSideLimit(perso.getPosition(), direction, window);
+            int downYLimit = labyrinthe.getSideLimit(perso.getPosition(), direction, window);
             if (downYLimit == -1){
 //                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","what are you doing inside a crossable ?",window);
                 return false;
@@ -112,18 +112,23 @@ bool Mouvement::move(Side direction, Perso &perso, Labyrinthe &terrain, SDL_Wind
         default:
             break;
     }
+    /*
+     * vérifie si la position de pacman correspond à la position d'un "Food"
+     * Le résultat est envoyé à un callback (interface FoodListener) implémenté par la classe Game
+     */
     if (instanceOf<Hero>(&perso)) {
 //        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","pero is instance of hero",window);
-        switch (terrain.checkFood(dynamic_cast<Hero &>(perso), game)) {
-            case Labyrinthe::FRUIT_EATEN:{
-                //TODO activer invincibilité hero
-                break;
-            }
-            case Labyrinthe::PILL_EATEN:{
-                //TODO modifier nombre de pill restantes
-                break;
-            }
-        }
+//        switch (labyrinthe.checkFood(dynamic_cast<Hero &>(perso), game)) {
+//            case Labyrinthe::FRUIT_EATEN:{// fruit mangé, active la possibilité de manger les phantomes
+//                //TODO activer invincibilité hero
+//                break;
+//            }
+//            case Labyrinthe::PILL_EATEN:{
+//
+//                break;
+//            }
+//        }
+        labyrinthe.checkFood(dynamic_cast<Hero &>(perso), game);
     }
         return true;
     }

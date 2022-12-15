@@ -20,8 +20,10 @@ public:
 
     void changeSprite(Side direction);
 
-private:
+    const Position& getStartingPosition() const;
 
+private:
+    Position startingPosition;;
 
 };
 

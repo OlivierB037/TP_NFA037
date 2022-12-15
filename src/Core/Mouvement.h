@@ -15,7 +15,7 @@
 class Mouvement {
 public:
 
-    static bool move(Side direction, Perso &perso, Labyrinthe &terrain, SDL_Window *window, Game &game);
+    static bool move(Side direction, Perso &perso, Labyrinthe &labyrinthe, SDL_Window *window, Game &game);
     static bool move(Side currentDirection, Side pendingDirection, Perso &perso, Labyrinthe &terrain, SDL_Window *window, Game &game);
 private:
     template<typename T> static bool instanceOf(Perso *trgt);

@@ -14,10 +14,9 @@ Perso::Perso(int _left_1_x, int _left_1_y, int _left_2_x, int _left_2_y,
                       _right_1_x,  _right_1_y,  _right_2_x,  _right_2_y,
                       _up_1_x,  _up_1_y,  _up_2_x,  _up_2_y,
                       _down_1_x,  _down_1_y,  _down_2_x, _down_2_y),
-                stepCount(1),
-                currentSprite(& (image.getLeft1()))
+                stepCount(1)
 {
-
+    currentSprite = &(image.getLeft1());
 }
 
 const Sprites &Perso::getImage() const {
@@ -68,4 +67,19 @@ void Perso::incrementStepCount() {
 //    }
 }
 
+bool Perso::operator==(const Perso &rhs) const {
+    return position.x == rhs.getPosition().x &&
+           position.y == rhs.getPosition().y &&
+           position.w == rhs.getPosition().w &&
+           position.h == rhs.getPosition().h &&
+           stepCount == rhs.stepCount;
+}
+
+bool Perso::operator!=(const Perso &rhs) const {
+    return position.x != rhs.getPosition().x ||
+           position.y != rhs.getPosition().y ||
+           position.w != rhs.getPosition().w ||
+           position.h != rhs.getPosition().h ||
+           stepCount != rhs.stepCount;
+}
 

@@ -12,15 +12,20 @@ class PhantomOrange  : public Phantom{
 public:
     PhantomOrange();
 
+    bool operator==(const PhantomOrange &rhs) const;
+
+    bool operator!=(const PhantomOrange &rhs) const;
+
     inline static const int PHANTOM_KEY{15636};
-    inline static const int START_POSITION_X {459};
-    inline static const int START_POSITION_Y {513};
+
     void setCurrentSprite(const SDL_Rect *currentSprite);
 
     void changeSprite(Side direction);
 
-private:
+    const Position& getStartingPosition() const;
 
+private:
+    const Position startingPosition;
 };
 
 

@@ -73,5 +73,28 @@ const SDL_Rect *Sprites::getBaseRect(Side side) const {
             break;
     }
 }
+bool Sprites::operator==(const Sprites &rhs) const {
+
+    auto rectEquals = [] (const SDL_Rect &a,const SDL_Rect &b) -> bool{
+        return a.x == b.x &&
+               a.y == b.y &&
+               a.w == b.w &&
+               a.h == b.h;
+    };
+
+    return rectEquals(left_1, rhs.left_1) &&
+           rectEquals(left_2, rhs.left_2) &&
+           rectEquals(right_1, rhs.right_1) &&
+           rectEquals(right_2, rhs.right_2) &&
+           rectEquals(up_1, rhs.up_1) &&
+           rectEquals(up_2, rhs.up_2) &&
+           rectEquals(down_1, rhs.down_1) &&
+           rectEquals(down_1, rhs.down_1);
+
+}
+
+bool Sprites::operator!=(const Sprites &rhs) const {
+    return !(rhs == *this);
+}
 
 
