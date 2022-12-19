@@ -89,7 +89,7 @@ private:
 
     /*éléments du labyrinthe */
     Bloc ***map;
-    Bloc *door[4];
+    Bloc *door[4]; //TODO changer en Bloc &door[4]
     int foodCount;
 
     template<typename T> bool instanceOf(Bloc *trgt);

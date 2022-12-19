@@ -8,6 +8,7 @@
 #include "../Environment/Wall.h"
 #include "../Environment/Food.h"
 #include "../Environment/Fruit.h"
+#include "../Logger.h"
 #include <fstream>
 #include <iostream>
 
@@ -128,29 +129,61 @@ Labyrinthe::Labyrinthe(const Labyrinthe& labyrinthe)
           phantoms(labyrinthe.phantoms), foodCount(labyrinthe.foodCount),DIMENSION_X(labyrinthe.DIMENSION_X),
           DIMENSION_Y(labyrinthe.DIMENSION_Y), door{nullptr,nullptr,nullptr,nullptr}, map(nullptr),window(nullptr)
 {
-    map = new Bloc**[DIMENSION_X];
 
+    map = new Bloc**[DIMENSION_X];
+//    bool messaged = false;
+//    if (!messaged){
+//        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "message", "test", labyrinthe.window);
+//        messaged = true;
+//    }
+
+    int doorCount = 0;
     for (int x = 0; x < DIMENSION_X; ++x) {
         map[x] = new Bloc*[DIMENSION_Y];
         for (int y = 0; y < DIMENSION_Y; ++y) {
 
-            *(map[x][y]) = *(labyrinthe.map[x][y]) ;
+            if (instanceOf<Fruit>(labyrinthe.map[x][y])) {
+                map[x][y] = new Fruit(*(dynamic_cast<Fruit*>(labyrinthe.map[x][y])));
+            }
+            else if (instanceOf<Food>(labyrinthe.map[x][y])) {
+                map[x][y] = new Food(*(dynamic_cast<Food*>(labyrinthe.map[x][y])));
+            }
+            else if (instanceOf<Wall>(labyrinthe.map[x][y])) {
+                map[x][y] = new Wall(*(dynamic_cast<Wall*>(labyrinthe.map[x][y])));
+            }
+            else if (instanceOf<Door>(labyrinthe.map[x][y])) {
+                if (doorCount < 4) {
+                    map[x][y] = new Door(*(dynamic_cast<Door *>(labyrinthe.map[x][y])));
+                    door[doorCount] = map[x][y];
+                    doorCount++;
+                }
+                else{
+                    throw Labyrinth_Exception("copy constructor error : too many doors");
+                }
+            }
+            else{
+                map[x][y] = new Bloc(*(labyrinthe.map[x][y]));
+            }
         }
     }
-    for (int i = 0; i < 4; ++i) {
-        door[i] = new Door(labyrinthe.door[i]);
-    }
+
+
+
+
     /*window n'est pas copié mais cet attribut n'est la qu'a des fins de test    */
     window = labyrinthe.window;
 }
 
 Labyrinthe::~Labyrinthe() {
-    if (door != nullptr){
-        delete[] *door;
-    }
+
+
+
+
     if (map != nullptr){
+
         for (int x = 0; x < DIMENSION_X; ++x) {
             for (int y = 0; y < DIMENSION_Y; ++y) {
+
                 if (map[x][y] != nullptr) {
                     delete map[x][y];
 
@@ -159,20 +192,40 @@ Labyrinthe::~Labyrinthe() {
             }
         }
     }
+
 }
 
 Labyrinthe &Labyrinthe::operator=(const Labyrinthe &rhs) {
     if (*this == rhs){
         return *this;
     }
+    int doorCount = 0;
     if (rhs.DIMENSION_X == DIMENSION_X && rhs.DIMENSION_Y == DIMENSION_Y) {
         for (int x = 0; x < DIMENSION_X; ++x) {
+            map[x] = new Bloc*[DIMENSION_Y];
             for (int y = 0; y < DIMENSION_Y; ++y) {
-                if (map[x][y] != nullptr) {
-                    delete map[x][y];
-
+                if (instanceOf<Fruit>(rhs.map[x][y])) {
+                    map[x][y] = new Fruit(*(dynamic_cast<Fruit*>(rhs.map[x][y])));
                 }
-                map[x][y] = rhs.map[x][y];
+                else if (instanceOf<Food>(rhs.map[x][y])) {
+                    map[x][y] = new Food(*(dynamic_cast<Food*>(rhs.map[x][y])));
+                }
+                else if (instanceOf<Wall>(rhs.map[x][y])) {
+                    map[x][y] = new Wall(*(dynamic_cast<Wall*>(rhs.map[x][y])));
+                }
+                else if (instanceOf<Door>(rhs.map[x][y])) {
+                    if (doorCount < 4) {
+                        map[x][y] = new Door(*(dynamic_cast<Door *>(rhs.map[x][y])));
+                        door[doorCount] = map[x][y];
+                        doorCount++;
+                    }
+                    else{
+                        throw Labyrinth_Exception("copy constructor error : too many doors");
+                    }
+                }
+                else{
+                    map[x][y] = new Bloc(*(rhs.map[x][y]));
+                }
             }
         }
     }
@@ -185,8 +238,28 @@ Labyrinthe &Labyrinthe::operator=(const Labyrinthe &rhs) {
         for (int x = 0; x < DIMENSION_X; ++x) {
             map[x] = new Bloc*[DIMENSION_Y];
             for (int y = 0; y < DIMENSION_Y; ++y) {
-
-                map[x][y] = rhs.map[x][y];
+                if (instanceOf<Fruit>(rhs.map[x][y])) {
+                    map[x][y] = new Fruit(*(dynamic_cast<Fruit*>(rhs.map[x][y])));
+                }
+                else if (instanceOf<Food>(rhs.map[x][y])) {
+                    map[x][y] = new Food(*(dynamic_cast<Food*>(rhs.map[x][y])));
+                }
+                else if (instanceOf<Wall>(rhs.map[x][y])) {
+                    map[x][y] = new Wall(*(dynamic_cast<Wall*>(rhs.map[x][y])));
+                }
+                else if (instanceOf<Door>(rhs.map[x][y])) {
+                    if (doorCount < 4) {
+                        map[x][y] = new Door(*(dynamic_cast<Door *>(rhs.map[x][y])));
+                        door[doorCount] = map[x][y];
+                        doorCount++;
+                    }
+                    else{
+                        throw Labyrinth_Exception("copy constructor error : too many doors");
+                    }
+                }
+                else{
+                    map[x][y] = new Bloc(*(rhs.map[x][y]));
+                }
             }
         }
 
@@ -200,7 +273,7 @@ Labyrinthe &Labyrinthe::operator=(const Labyrinthe &rhs) {
         door[i] = new Door(rhs.door[i]);
     }
     /*
-     * dans le cas ou un labyrinthe serait réaffecté (peu probable) les phantomes restent les mêmes
+     * dans le cas ou un labyrinthe serait copié (peu probable) les phantomes restent les mêmes
      * ils seront probablement déplacés dans Game avec le Hero ou faits Singletons
      */
     foodCount = rhs.foodCount;
@@ -351,7 +424,7 @@ void Labyrinthe::incrementPillCount(int value) {
 }
 //TODO rendre thread safe
 void Labyrinthe::startPhantomsVulnerability() {
-    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","phantoms are vulnerable",window);
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","starting thread : phantoms are vulnerable",window);
     for (auto p : phantoms) {
         p.second->setVulnerable(true);
     }
@@ -360,7 +433,7 @@ void Labyrinthe::startPhantomsVulnerability() {
 }
 
 void Labyrinthe::endPhantomsVulnerability() {
-    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","phantoms are not vulnerable",window);
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","ending thread : phantoms are not vulnerable",window);
     for (auto p : phantoms) {
         p.second->setVulnerable(false);
     }

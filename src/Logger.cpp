@@ -40,8 +40,8 @@ void Logger::newLogSection() const {
     fichier << std::endl << "------------------------------- NEW LOG ---------------------------------" << std::endl;
     fichier.close();
 }
-
-void Logger::addInfoLog(char *format, ...) {
+//TODO regler problème args multiples
+void Logger::addInfoLog(char *format, ...) const {
     va_list list;
     va_start(list, format);
     char* msg = new char[90];

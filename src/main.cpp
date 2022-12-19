@@ -5,6 +5,8 @@
 #include <cstdlib>
 
 #include "Core/Game.h"
+#include "Labyrinth_Exception.h"
+#include "Logger.h"
 
 /*
 * J'ai commencé par coder le jeu sans me soucier des TP à rendre, j'effectue ensuite des modifications pour essayer de coller aux énoncés,
@@ -33,11 +35,51 @@ void showFormattedDialog(char *format,...);
 
 int main(int argumentCount, char* arguments[])
 {
-    //TODO créer classe Window
-//    std::shared_ptr<Window> window = std::make_shared<Window>();
     Window window;
     window.init();
-    Game game("terrain.txt");
+
+
+    // début Bloc de test
+    /*
+     * le bloc suivant teste le bon fonctionnement des méthodes de Coplien
+     */
+    try {
+
+        Labyrinthe *labyrinthe = new Labyrinthe("resources/terrain.txt", 56, 62, window.getWindow());
+        Labyrinthe copy(*labyrinthe);
+
+        labyrinthe->setDoor(true);
+        Logger::getInstance()->newLogSection();
+        if (copy.getDoor()[0]->isCrossable()) {
+            Logger::getInstance()->addInfoLog("copy door has been open too"); // la "copie" a été modifiée en même temps que labyrinthe
+        }
+        else{
+            Logger::getInstance()->addInfoLog("copy door stayed close"); // copy est bien une copie
+        }
+        delete labyrinthe;
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "message", "test", window.getWindow());
+
+        if (copy.getDoor() == nullptr || copy.getDoor()[0] == nullptr || copy.getBloc({0,0}) == nullptr){ // vérifie si les pointeurs ont été supprimés dans copy
+            Logger::getInstance()->addInfoLog("copy elements were deleted");
+
+        }
+        else{
+            Logger::getInstance()->addInfoLog("copy is really a copy");
+
+        }
+        // le dernier log sert a vérifier si il n'y a pas eu d'erreurs en accèdant à copy dans le if précédent
+        Logger::getInstance()->addInfoLog("if this Line is in the log, there were no errors accessing copy after original was deleted");
+
+
+        //Labyrinthe labyrinthe;
+
+    } catch (std::exception const &e) {
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "message", e.what(), window.getWindow());
+    }
+
+    //fin bloc de test
+
+    Game game("resources/terrain.txt");
     game.start(&window);
 
     return EXIT_SUCCESS;

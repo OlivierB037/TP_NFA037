@@ -154,12 +154,12 @@ build CMakeFiles/TP_NFA037.dir/src/Environment/Food.cpp.obj: CXX_COMPILER__TP_NF
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
   OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Environment
 
-build CMakeFiles/TP_NFA037.dir/src/UI/Game.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/UI/Game.cpp || cmake_object_order_depends_target_TP_NFA037
-  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\UI\Game.cpp.obj.d
+build CMakeFiles/TP_NFA037.dir/src/Core/Game.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Core/Game.cpp || cmake_object_order_depends_target_TP_NFA037
+  DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Core\Game.cpp.obj.d
   FLAGS = -g -std=gnu++20
   INCLUDES = -IC:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\TP_NFA037.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\UI
+  OBJECT_FILE_DIR = CMakeFiles\TP_NFA037.dir\src\Core
 
 build CMakeFiles/TP_NFA037.dir/src/Environment/Fruit.cpp.obj: CXX_COMPILER__TP_NFA037_Debug C$:/Users/aperi/CLionProjects/NFA037/CPP/TP$ NFA037/src/Environment/Fruit.cpp || cmake_object_order_depends_target_TP_NFA037
   DEP_FILE = CMakeFiles\TP_NFA037.dir\src\Environment\Fruit.cpp.obj.d
@@ -211,7 +211,7 @@ build CMakeFiles/TP_NFA037.dir/src/UI/Window.cpp.obj: CXX_COMPILER__TP_NFA037_De
 #############################################
 # Link the executable TP_NFA037.exe
 
-build TP_NFA037.exe: CXX_EXECUTABLE_LINKER__TP_NFA037_Debug CMakeFiles/TP_NFA037.dir/src/main.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/Position.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/Hero.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/Perso.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/PhantomBlue.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Sprites.cpp.obj CMakeFiles/TP_NFA037.dir/src/Core/Mouvement.cpp.obj CMakeFiles/TP_NFA037.dir/src/Core/Labyrinthe.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Bloc.cpp.obj CMakeFiles/TP_NFA037.dir/src/Logger.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Key.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Arrows.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Wall.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Door.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Food.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Game.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Fruit.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/Phantom.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/PhantomRed.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/PhantomPink.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/PhantomOrange.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Window.cpp.obj | C$:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2main.a C$:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2.dll.a
+build TP_NFA037.exe: CXX_EXECUTABLE_LINKER__TP_NFA037_Debug CMakeFiles/TP_NFA037.dir/src/main.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/Position.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/Hero.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/Perso.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/PhantomBlue.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Sprites.cpp.obj CMakeFiles/TP_NFA037.dir/src/Core/Mouvement.cpp.obj CMakeFiles/TP_NFA037.dir/src/Core/Labyrinthe.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Bloc.cpp.obj CMakeFiles/TP_NFA037.dir/src/Logger.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Key.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Arrows.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Wall.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Door.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Food.cpp.obj CMakeFiles/TP_NFA037.dir/src/Core/Game.cpp.obj CMakeFiles/TP_NFA037.dir/src/Environment/Fruit.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/Phantom.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/PhantomRed.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/PhantomPink.cpp.obj CMakeFiles/TP_NFA037.dir/src/Characters/PhantomOrange.cpp.obj CMakeFiles/TP_NFA037.dir/src/UI/Window.cpp.obj | C$:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2main.a C$:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2.dll.a
   FLAGS = -g
   LINK_FLAGS = -static-libstdc++
   LINK_LIBRARIES = -lmingw32  -mwindows  C:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2main.a  C:/Users/aperi/programmation/libraries/SDL2-devel-2.26.0-mingw/SDL2-2.26.0/x86_64-w64-mingw32/lib/libSDL2.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

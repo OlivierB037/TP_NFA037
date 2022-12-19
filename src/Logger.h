@@ -22,7 +22,7 @@ public:
     void operator=(const Logger &) = delete;
     static const Logger  * getInstance();
     void addInfoLog(const std::string& msg) const;
-    void addInfoLog(char * format,...);
+    void addInfoLog(char * format,...) const;
     void newLogSection() const;
 private:
 
