@@ -32,12 +32,20 @@ public:
     //TODO créer template instanceOf
     Labyrinthe() = delete;
 
-    const int DIMENSION_X;
-    const int DIMENSION_Y;
+    int DIMENSION_X;
+    int DIMENSION_Y;
 
     Labyrinthe(const std::string& fileName, int terrain_width, int terrain_height, SDL_Window *_window);
 
     ~Labyrinthe();
+
+    Labyrinthe(const Labyrinthe& labyrinthe);
+
+    Labyrinthe& operator=(const Labyrinthe& rhs);
+
+    bool operator==(const Labyrinthe &rhs) const;
+
+    bool operator!=(const Labyrinthe &rhs) const;
 
     Bloc *getBloc(Position _position);
 
@@ -92,6 +100,7 @@ private:
 //    bool operator==(Lval &lval, Rval&rval)
 
 };
+
 
 
 #endif //TP_01_TERRAIN_H

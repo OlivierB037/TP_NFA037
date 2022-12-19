@@ -13,93 +13,10 @@
 
 #include <SDL.h>
 #include <thread>
-
 template<typename T>
 bool Labyrinthe::instanceOf(Bloc *trgt)
 {
     return dynamic_cast<T*>(trgt);
-}
-
-Bloc const *Labyrinthe::getSideBloc(const Position &position, Side direction) {
-    if (direction == LEFT || direction == UP) {
-        return map[position.x / BLOC_SIZE][position.y / BLOC_SIZE];
-    }
-    else{
-        return map[(position.x + CHARACTER_SIZE - 1) / BLOC_SIZE][(position.y + CHARACTER_SIZE - 1) / BLOC_SIZE];
-    }
-}
-
-int Labyrinthe::getSideLimit(const Position &position, Side direction, SDL_Window *window) const {
-    switch (direction) {// inclure constante de retour indiquant le nombre de pixel manquants pour pouvoir tourner
-        case LEFT: {
-            if (!(map[position.x / BLOC_SIZE][position.y / BLOC_SIZE]->isCrossable())) { // is the player already inside a crossable
-//                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","inside a wall",window);
-
-                return -1;
-            }
-//            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","crossable on right bloc 1",window);
-
-            int leftBlocX = (position.x / BLOC_SIZE) - 1;
-            int leftBlocY = position.y / BLOC_SIZE;
-            return (!(map[leftBlocX][leftBlocY]->isCrossable()) || !(map[leftBlocX][leftBlocY + 1]->isCrossable()) ||
-                            !(map[leftBlocX][leftBlocY + 2]->isCrossable()) || !(map[leftBlocX][leftBlocY + 3]->isCrossable())) ? position.x - (position.x % BLOC_SIZE) : NO_WALL_NEXT;
-            //TODO reprendre autres directions pour gérer différents blocs
-        }
-        case RIGHT: {
-            if (!(map[(position.x + CHARACTER_SIZE - 1) / BLOC_SIZE][position.y / BLOC_SIZE]->isCrossable())) {
-                return -1;
-            }
-            int rightBlocX = ((position.x + CHARACTER_SIZE - 1) / BLOC_SIZE) + 1;
-            int rightBlocY = position.y / BLOC_SIZE;
-            if (!(map[rightBlocX][rightBlocY]->isCrossable())){
-//                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","crossable on right bloc 0",window);
-                return ((position.x + CHARACTER_SIZE - 1) + (BLOC_SIZE - (position.x + CHARACTER_SIZE - 1) % (BLOC_SIZE)));
-            }
-            else if (!(map[rightBlocX][rightBlocY + 1]->isCrossable())){
-//                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","crossable on right bloc 1",window);
-                return ((position.x + CHARACTER_SIZE - 1) + (BLOC_SIZE - (position.x + CHARACTER_SIZE - 1) % (BLOC_SIZE)));
-            }
-            else if (!(map[rightBlocX][rightBlocY + 2]->isCrossable())){
-//                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","crossable on right bloc 2",window);
-                return ((position.x + CHARACTER_SIZE - 1) + (BLOC_SIZE - (position.x + CHARACTER_SIZE - 1) % (BLOC_SIZE)));
-
-            }
-            else if (!(map[rightBlocX][rightBlocY + 3]->isCrossable())){
-//                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","crossable on right bloc 3",window);
-                return ((position.x + CHARACTER_SIZE - 1) + (BLOC_SIZE - (position.x + CHARACTER_SIZE - 1) % (BLOC_SIZE)));
-
-            }
-            else{
-                return NO_WALL_NEXT;
-            }
-//            return ((map[rightBlocX][rightBlocY].isWall()) || (map[rightBlocX][rightBlocY + 1].isCrossable()) ||
-//                    map[rightBlocX][rightBlocY + 2].isWall() || map[rightBlocX][rightBlocY + 3].isCrossable()) ?
-//                   (((position.x + CHARACTER_SIZE - 1) / BLOC_SIZE) + 1) * BLOC_SIZE : NO_WALL_NEXT;
-        }
-        case UP: {
-            if (!(map[position.x / BLOC_SIZE][position.y / BLOC_SIZE]->isCrossable())) { // is the player already inside a crossable
-                return -1;
-            }
-            int upBlocX = position.x / BLOC_SIZE;
-            int upBlocY = (position.y / BLOC_SIZE) - 1;
-            return (!(map[upBlocX][upBlocY]->isCrossable()) || !(map[upBlocX + 1][upBlocY]->isCrossable()) ||
-                    !(map[upBlocX + 2][upBlocY]->isCrossable()) || !(map[upBlocX + 3][upBlocY]->isCrossable())) ?
-                    position.y - (position.y % BLOC_SIZE) : NO_WALL_NEXT;
-        }
-        case DOWN: {
-
-            if (!(map[position.x / BLOC_SIZE][(position.y + CHARACTER_SIZE - 1) / BLOC_SIZE]->isCrossable())) {
-                return -1;
-            }
-            int downBlocX = position.x / BLOC_SIZE;
-            int downBlocY = ((position.y + CHARACTER_SIZE - 1) / BLOC_SIZE) + 1;
-            return (!(map[downBlocX][downBlocY]->isCrossable()) || !(map[downBlocX + 1][downBlocY]->isCrossable()) ||
-                    !(map[downBlocX + 2][downBlocY]->isCrossable()) || !(map[downBlocX + 3][downBlocY]->isCrossable())) ?
-                   ((position.y + CHARACTER_SIZE - 1) + (BLOC_SIZE - (position.y + CHARACTER_SIZE - 1) % (BLOC_SIZE))) : NO_WALL_NEXT;
-        }
-        default:
-            return -1;
-    }
 }
 
 Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terrain_height, SDL_Window *_window):
@@ -167,14 +84,14 @@ Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terra
                 else{
                     if (door[doorIndex] == nullptr){
 
-                       if(doorY == y - 1){
-                           doorY = y;
-                           map[x][y] = new Door(false);
-                           door[doorIndex] = map[x][y];
+                        if(doorY == y - 1){
+                            doorY = y;
+                            map[x][y] = new Door(false);
+                            door[doorIndex] = map[x][y];
 
-                           doorIndex++;
+                            doorIndex++;
                         }else{
-                           throw Labyrinth_Exception("doors format error : not enough door blocs (vertical door detected)" );
+                            throw Labyrinth_Exception("doors format error : not enough door blocs (vertical door detected)" );
 
                         }
                     }else {
@@ -204,6 +121,177 @@ Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terra
     }
 
 }
+
+Labyrinthe::Labyrinthe(const Labyrinthe& labyrinthe)
+        : phantomRed(labyrinthe.phantomRed), phantomBlue(labyrinthe.phantomBlue),
+          phantomPink(labyrinthe.phantomPink), phantomOrange(labyrinthe.phantomOrange),
+          phantoms(labyrinthe.phantoms), foodCount(labyrinthe.foodCount),DIMENSION_X(labyrinthe.DIMENSION_X),
+          DIMENSION_Y(labyrinthe.DIMENSION_Y), door{nullptr,nullptr,nullptr,nullptr}, map(nullptr),window(nullptr)
+{
+    map = new Bloc**[DIMENSION_X];
+
+    for (int x = 0; x < DIMENSION_X; ++x) {
+        map[x] = new Bloc*[DIMENSION_Y];
+        for (int y = 0; y < DIMENSION_Y; ++y) {
+
+            *(map[x][y]) = *(labyrinthe.map[x][y]) ;
+        }
+    }
+    for (int i = 0; i < 4; ++i) {
+        door[i] = new Door(labyrinthe.door[i]);
+    }
+    /*window n'est pas copié mais cet attribut n'est la qu'a des fins de test    */
+    window = labyrinthe.window;
+}
+
+Labyrinthe::~Labyrinthe() {
+    if (door != nullptr){
+        delete[] *door;
+    }
+    if (map != nullptr){
+        for (int x = 0; x < DIMENSION_X; ++x) {
+            for (int y = 0; y < DIMENSION_Y; ++y) {
+                if (map[x][y] != nullptr) {
+                    delete map[x][y];
+
+                }
+
+            }
+        }
+    }
+}
+
+Labyrinthe &Labyrinthe::operator=(const Labyrinthe &rhs) {
+    if (*this == rhs){
+        return *this;
+    }
+    if (rhs.DIMENSION_X == DIMENSION_X && rhs.DIMENSION_Y == DIMENSION_Y) {
+        for (int x = 0; x < DIMENSION_X; ++x) {
+            for (int y = 0; y < DIMENSION_Y; ++y) {
+                if (map[x][y] != nullptr) {
+                    delete map[x][y];
+
+                }
+                map[x][y] = rhs.map[x][y];
+            }
+        }
+    }
+    else{
+        DIMENSION_X = rhs.DIMENSION_X;
+        DIMENSION_Y = rhs.DIMENSION_Y;
+        delete map;
+        map = new Bloc**[DIMENSION_X];
+
+        for (int x = 0; x < DIMENSION_X; ++x) {
+            map[x] = new Bloc*[DIMENSION_Y];
+            for (int y = 0; y < DIMENSION_Y; ++y) {
+
+                map[x][y] = rhs.map[x][y];
+            }
+        }
+
+    }
+
+
+    for (int i = 0; i < 4; ++i) {
+        if(door[i] != nullptr) {
+            delete door[i];
+        }
+        door[i] = new Door(rhs.door[i]);
+    }
+    /*
+     * dans le cas ou un labyrinthe serait réaffecté (peu probable) les phantomes restent les mêmes
+     * ils seront probablement déplacés dans Game avec le Hero ou faits Singletons
+     */
+    foodCount = rhs.foodCount;
+
+
+
+}
+
+Bloc const *Labyrinthe::getSideBloc(const Position &position, Side direction) {
+    if (direction == LEFT || direction == UP) {
+        return map[position.x / BLOC_SIZE][position.y / BLOC_SIZE];
+    }
+    else{
+        return map[(position.x + CHARACTER_SIZE - 1) / BLOC_SIZE][(position.y + CHARACTER_SIZE - 1) / BLOC_SIZE];
+    }
+}
+
+int Labyrinthe::getSideLimit(const Position &position, Side direction, SDL_Window *window) const {
+    switch (direction) {// inclure constante de retour indiquant le nombre de pixel manquants pour pouvoir tourner
+        case LEFT: {
+            if (!(map[position.x / BLOC_SIZE][position.y / BLOC_SIZE]->isCrossable())) { // is the player already inside a crossable
+//                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","inside a wall",window);
+
+                return -1;
+            }
+//            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","crossable on right bloc 1",window);
+
+            int leftBlocX = (position.x / BLOC_SIZE) - 1;
+            int leftBlocY = position.y / BLOC_SIZE;
+            return (!(map[leftBlocX][leftBlocY]->isCrossable()) || !(map[leftBlocX][leftBlocY + 1]->isCrossable()) ||
+                    !(map[leftBlocX][leftBlocY + 2]->isCrossable()) || !(map[leftBlocX][leftBlocY + 3]->isCrossable())) ? position.x - (position.x % BLOC_SIZE) : NO_WALL_NEXT;
+            //TODO reprendre autres directions pour gérer différents blocs
+        }
+        case RIGHT: {
+            if (!(map[(position.x + CHARACTER_SIZE - 1) / BLOC_SIZE][position.y / BLOC_SIZE]->isCrossable())) {
+                return -1;
+            }
+            int rightBlocX = ((position.x + CHARACTER_SIZE - 1) / BLOC_SIZE) + 1;
+            int rightBlocY = position.y / BLOC_SIZE;
+            if (!(map[rightBlocX][rightBlocY]->isCrossable())){
+//                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","crossable on right bloc 0",window);
+                return ((position.x + CHARACTER_SIZE - 1) + (BLOC_SIZE - (position.x + CHARACTER_SIZE - 1) % (BLOC_SIZE)));
+            }
+            else if (!(map[rightBlocX][rightBlocY + 1]->isCrossable())){
+//                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","crossable on right bloc 1",window);
+                return ((position.x + CHARACTER_SIZE - 1) + (BLOC_SIZE - (position.x + CHARACTER_SIZE - 1) % (BLOC_SIZE)));
+            }
+            else if (!(map[rightBlocX][rightBlocY + 2]->isCrossable())){
+//                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","crossable on right bloc 2",window);
+                return ((position.x + CHARACTER_SIZE - 1) + (BLOC_SIZE - (position.x + CHARACTER_SIZE - 1) % (BLOC_SIZE)));
+
+            }
+            else if (!(map[rightBlocX][rightBlocY + 3]->isCrossable())){
+//                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","crossable on right bloc 3",window);
+                return ((position.x + CHARACTER_SIZE - 1) + (BLOC_SIZE - (position.x + CHARACTER_SIZE - 1) % (BLOC_SIZE)));
+
+            }
+            else{
+                return NO_WALL_NEXT;
+            }
+//            return ((map[rightBlocX][rightBlocY].isWall()) || (map[rightBlocX][rightBlocY + 1].isCrossable()) ||
+//                    map[rightBlocX][rightBlocY + 2].isWall() || map[rightBlocX][rightBlocY + 3].isCrossable()) ?
+//                   (((position.x + CHARACTER_SIZE - 1) / BLOC_SIZE) + 1) * BLOC_SIZE : NO_WALL_NEXT;
+        }
+        case UP: {
+            if (!(map[position.x / BLOC_SIZE][position.y / BLOC_SIZE]->isCrossable())) { // is the player already inside a crossable
+                return -1;
+            }
+            int upBlocX = position.x / BLOC_SIZE;
+            int upBlocY = (position.y / BLOC_SIZE) - 1;
+            return (!(map[upBlocX][upBlocY]->isCrossable()) || !(map[upBlocX + 1][upBlocY]->isCrossable()) ||
+                    !(map[upBlocX + 2][upBlocY]->isCrossable()) || !(map[upBlocX + 3][upBlocY]->isCrossable())) ?
+                   position.y - (position.y % BLOC_SIZE) : NO_WALL_NEXT;
+        }
+        case DOWN: {
+
+            if (!(map[position.x / BLOC_SIZE][(position.y + CHARACTER_SIZE - 1) / BLOC_SIZE]->isCrossable())) {
+                return -1;
+            }
+            int downBlocX = position.x / BLOC_SIZE;
+            int downBlocY = ((position.y + CHARACTER_SIZE - 1) / BLOC_SIZE) + 1;
+            return (!(map[downBlocX][downBlocY]->isCrossable()) || !(map[downBlocX + 1][downBlocY]->isCrossable()) ||
+                    !(map[downBlocX + 2][downBlocY]->isCrossable()) || !(map[downBlocX + 3][downBlocY]->isCrossable())) ?
+                   ((position.y + CHARACTER_SIZE - 1) + (BLOC_SIZE - (position.y + CHARACTER_SIZE - 1) % (BLOC_SIZE))) : NO_WALL_NEXT;
+        }
+        default:
+            return -1;
+    }
+}
+
+
 
 Bloc const * const*Labyrinthe::getDoor() const {
     return door;
@@ -286,22 +374,43 @@ const std::map<int, Phantom *> &Labyrinthe::getPhantoms() const {
     return phantoms;
 }
 
-Labyrinthe::~Labyrinthe() {
-    if (door != nullptr){
-        delete[] *door;
-    }
-    if (map != nullptr){
-        for (int x = 0; x < DIMENSION_X; ++x) {
-            for (int y = 0; y < DIMENSION_Y; ++y) {
-                if (map[x][y] != nullptr) {
-                    delete map[x][y];
 
-                }
-
-            }
-        }
-    }
+bool Labyrinthe::operator==(const Labyrinthe &rhs) const {
+    return DIMENSION_X == rhs.DIMENSION_X &&
+           DIMENSION_Y == rhs.DIMENSION_Y &&
+           phantomBlue == rhs.phantomBlue &&
+           phantomRed == rhs.phantomRed &&
+           phantomPink == rhs.phantomPink &&
+           phantomOrange == rhs.phantomOrange &&
+           phantoms == rhs.phantoms &&
+           map == rhs.map &&
+           door[0] == rhs.door[0] &&
+           door[1] == rhs.door[1] &&
+           door[2] == rhs.door[2] &&
+           door[3] == rhs.door[3] &&
+           foodCount == rhs.foodCount &&
+           window == rhs.window;
 }
+
+bool Labyrinthe::operator!=(const Labyrinthe &rhs) const {
+    return DIMENSION_X != rhs.DIMENSION_X ||
+           DIMENSION_Y != rhs.DIMENSION_Y ||
+           phantomBlue != rhs.phantomBlue ||
+           phantomRed != rhs.phantomRed ||
+           phantomPink != rhs.phantomPink ||
+           phantomOrange != rhs.phantomOrange ||
+           phantoms != rhs.phantoms ||
+           map != rhs.map ||
+           door[0] != rhs.door[0] ||
+           door[1] != rhs.door[1] ||
+           door[2] != rhs.door[2] ||
+           door[3] != rhs.door[3] ||
+           foodCount != rhs.foodCount ||
+           window != rhs.window;
+}
+
+
+
 
 Position Labyrinthe::getBlocCoordinates(int blocX, int blocY) {
     return Position(blocX * BLOC_SIZE, blocY * BLOC_SIZE);
@@ -310,9 +419,6 @@ Position Labyrinthe::getBlocCoordinates(int blocX, int blocY) {
 Bloc *Labyrinthe::getBloc(Position _position) {
     return map[_position.x/CHARACTER_SIZE][_position.y / BLOC_SIZE];
 }
-
-
-
 
 
 

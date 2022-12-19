@@ -7,9 +7,9 @@
 
 
 
-#include "../Core/Labyrinthe.h"
+#include "Labyrinthe.h"
 #include "../Callbacks/FoodListener.h"
-#include "Window.h"
+#include "../UI/Window.h"
 
 
 class Game : public FoodListener{

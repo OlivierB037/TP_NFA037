@@ -6,11 +6,11 @@
 #include <fstream>
 
 #include "../Characters/Hero.h"
-#include "../Core/Mouvement.h"
+#include "Mouvement.h"
 #include "../Logger.h"
 #include "../Labyrinth_Exception.h"
-#include "Key.h"
-#include "Arrows.h"
+#include "../UI/Key.h"
+#include "../UI/Arrows.h"
 #include "../Environment/Food.h"
 
 
@@ -205,7 +205,7 @@ void Game::start(Window *window) {
         }
 
 
-        if (!(emptyRects->empty())){
+        if (emptyRects->empty()){
             window->updateTextures(*hero,labyrinthe->getPhantoms());
 
         }

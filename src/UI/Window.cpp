@@ -78,6 +78,11 @@ void Window::updateTextures(const Hero &hero, const std::map<int, Phantom*> &pha
         SDL_RenderCopy(renderer,backgroundEmpty, r, r);
     }
     SDL_RenderCopy(renderer,persosTexture,hero.getCurrentSprite(),&(hero.getPosition()));
+    for (auto phantom : phantoms) {
+        if (phantom.second->isAlive()){
+            SDL_RenderCopy(renderer,persosTexture,phantom.second->getCurrentSprite(),&(phantom.second->getPosition()));
+        }
+    }
     SDL_RenderPresent(renderer);
 
 }

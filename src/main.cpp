@@ -4,11 +4,31 @@
 
 #include <cstdlib>
 
-#include "UI/Game.h"
+#include "Core/Game.h"
 
 /*
- * Je n'ai pas réussi à dessiner un Pacman convaincant, et les fantomes allaient me prendre bien trop de temps, donc je suis revenu à la version utilisant des sprites
- */
+* J'ai commencé par coder le jeu sans me soucier des TP à rendre, j'effectue ensuite des modifications pour essayer de coller aux énoncés,
+* cela coute du temps, mais cela permet également de beaucoup pratiquer, et faire comme ça m'a permis de bien progresser en java
+*
+* La classe Labyrinthe diffère un peu de celle de l'énoncé:
+*
+* ** par chance j'ai utilisé les mêmes symboles que ceux demandés dans l'énoncé pour les murs, j'ai également ajouté un type Door (symbole '_'
+*       correspondant à la porte du respawn des fantomes.
+*
+* ** au lieu d'un char* correspondant au terrain, les données du labyrinthe sont dans un fichier et sont extraites vers une matrice de pointeurs de Bloc (map***)
+*      Le polymorphisme est ensuite utilisé pour distinguer la nature de chaque Bloc (Food, Fruit, Wall, Door ou Bloc représentant le chemin)
+*
+* ** j'ai surchargé l'opérateur = de Labyrinthe pour suivre la consigne et respecter la forme canonique de Coplien, mais ça ne colle pas vraiment
+*      avec la classe Labyrinthe qui est prévue pour être une classe unique (1 jeu, 1 labyrinthe)
+*
+* la fonction getElement est essentiellement remplacée par les fonctions :
+*
+* ** getBlocCoordinates(int x, int y) qui renvoie les coordonnées d'un bloc à partir de ses indexes dans la matrice
+*
+* ** getBloc(Position position) qui renvoie le Bloc contenant la position passée en paramètre
+*
+* l'enum Direction est dans le fichier UI/Sprites.h (ça avait du sens au début du projet) il serait vraiment fastidieux de la déplacer maintenant
+*/
 void showFormattedDialog(char *format,...);
 
 int main(int argumentCount, char* arguments[])

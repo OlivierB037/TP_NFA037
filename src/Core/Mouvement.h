@@ -10,7 +10,7 @@
 #include "../UI/Sprites.h"
 #include "../Characters/Perso.h"
 #include "Labyrinthe.h"
-#include "../UI/Game.h"
+#include "Game.h"
 
 class Mouvement {
 public:
