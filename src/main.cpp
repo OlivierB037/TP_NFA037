@@ -57,7 +57,7 @@ int main(int argumentCount, char* arguments[])
             Logger::getInstance()->addInfoLog("copy door stayed close"); // copy est bien une copie
         }
         delete labyrinthe;
-        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "message", "test", window.getWindow());
+//        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "message", "test", window.getWindow());
 
         if (copy.getDoor() == nullptr || copy.getDoor()[0] == nullptr || copy.getBloc({0,0}) == nullptr){ // vérifie si les pointeurs ont été supprimés dans copy
             Logger::getInstance()->addInfoLog("copy elements were deleted");

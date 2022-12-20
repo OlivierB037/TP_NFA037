@@ -72,21 +72,13 @@ public:
 
 
 private:
-    void endPhantomsVulnerability();
-    void startPhantomsVulnerability();
-    //TODO réflechir classe phantoms unique ou mettre les 4 differents dans la map
-    //TODO déplacer fantomes dans Game et ne conserver que le tableau de pointeurs
-
-    /* phantomes */
-
-
 
     /*mutex de synchronisation du thread gérant l'invincibilité après avoir mangé un fruit */
     std::mutex vulnerability_lock;
 
     /*éléments du labyrinthe */
     Bloc ***map;
-    Bloc *door[4]; //TODO changer en Bloc &door[4]
+    Bloc *door[4]; //TODO changer en Bloc **door[4]
     int foodCount;
 
     template<typename T> bool instanceOf(Bloc *trgt);
