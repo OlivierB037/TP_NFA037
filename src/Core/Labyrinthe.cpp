@@ -25,10 +25,7 @@ Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terra
 
 {
 
-    phantoms.insert(std::make_pair(PhantomRed::PHANTOM_KEY,&phantomRed));
-    phantoms.insert(std::make_pair(PhantomPink::PHANTOM_KEY,&phantomPink));
-    phantoms.insert(std::make_pair(PhantomBlue::PHANTOM_KEY,&phantomBlue));
-    phantoms.insert(std::make_pair(PhantomOrange::PHANTOM_KEY,&phantomOrange));
+
     this->window = _window;
     std::ifstream fileReader {fileName} ;
     std::string line;
@@ -124,9 +121,7 @@ Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terra
 }
 
 Labyrinthe::Labyrinthe(const Labyrinthe& labyrinthe)
-        : phantomRed(labyrinthe.phantomRed), phantomBlue(labyrinthe.phantomBlue),
-          phantomPink(labyrinthe.phantomPink), phantomOrange(labyrinthe.phantomOrange),
-          phantoms(labyrinthe.phantoms), foodCount(labyrinthe.foodCount),DIMENSION_X(labyrinthe.DIMENSION_X),
+        : foodCount(labyrinthe.foodCount),DIMENSION_X(labyrinthe.DIMENSION_X),
           DIMENSION_Y(labyrinthe.DIMENSION_Y), door{nullptr,nullptr,nullptr,nullptr}, map(nullptr),window(nullptr)
 {
 
@@ -272,10 +267,7 @@ Labyrinthe &Labyrinthe::operator=(const Labyrinthe &rhs) {
         }
         door[i] = new Door(rhs.door[i]);
     }
-    /*
-     * dans le cas ou un labyrinthe serait copié (peu probable) les phantomes restent les mêmes
-     * ils seront probablement déplacés dans Game avec le Hero ou faits Singletons
-     */
+
     foodCount = rhs.foodCount;
 
 
@@ -376,7 +368,7 @@ void Labyrinthe::setDoor(bool open) {
     }
 }
 
-int Labyrinthe::checkFood(Hero &hero, FoodListener &listener) {
+int Labyrinthe::checkFood(Hero &hero, FoodListener &listener, Vulnerability_Callback &callback) {
     //TODO overload == pour vérifier si Bloc instanceof Food
     //TODO uytiliser futur fonction bloc->coordonnée pour parametre listener
     int blocX = hero.getPosition().x / BLOC_SIZE;
@@ -396,10 +388,10 @@ int Labyrinthe::checkFood(Hero &hero, FoodListener &listener) {
         listener.foodEaten(((blocX+1) * BLOC_SIZE),((blocY+1) * BLOC_SIZE),foodCount);
         std::thread t([&]() -> void {
             if(vulnerability_lock.try_lock()) {
-                this->startPhantomsVulnerability();
+                callback.startVulnerability();
 //                SDL_Delay(Phantom::VULNERABILITY_TIME);
                 std::this_thread::sleep_for(std::chrono::milliseconds(Phantom::VULNERABILITY_TIME));
-                this->endPhantomsVulnerability();
+                callback.endVulnerability();
                 vulnerability_lock.unlock();
                 return;
             }
@@ -422,40 +414,18 @@ void Labyrinthe::setPillCount(int foodCount) {
 void Labyrinthe::incrementPillCount(int value) {
     this->foodCount += value;
 }
-//TODO rendre thread safe
-void Labyrinthe::startPhantomsVulnerability() {
-    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","starting thread : phantoms are vulnerable",window);
-    for (auto p : phantoms) {
-        p.second->setVulnerable(true);
-    }
 
 
-}
-
-void Labyrinthe::endPhantomsVulnerability() {
-    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","ending thread : phantoms are not vulnerable",window);
-    for (auto p : phantoms) {
-        p.second->setVulnerable(false);
-    }
-}
 
 void Labyrinthe::checkCollision(Hero &hero) {
 
 }
 
-const std::map<int, Phantom *> &Labyrinthe::getPhantoms() const {
-    return phantoms;
-}
 
 
 bool Labyrinthe::operator==(const Labyrinthe &rhs) const {
     return DIMENSION_X == rhs.DIMENSION_X &&
            DIMENSION_Y == rhs.DIMENSION_Y &&
-           phantomBlue == rhs.phantomBlue &&
-           phantomRed == rhs.phantomRed &&
-           phantomPink == rhs.phantomPink &&
-           phantomOrange == rhs.phantomOrange &&
-           phantoms == rhs.phantoms &&
            map == rhs.map &&
            door[0] == rhs.door[0] &&
            door[1] == rhs.door[1] &&
@@ -468,11 +438,6 @@ bool Labyrinthe::operator==(const Labyrinthe &rhs) const {
 bool Labyrinthe::operator!=(const Labyrinthe &rhs) const {
     return DIMENSION_X != rhs.DIMENSION_X ||
            DIMENSION_Y != rhs.DIMENSION_Y ||
-           phantomBlue != rhs.phantomBlue ||
-           phantomRed != rhs.phantomRed ||
-           phantomPink != rhs.phantomPink ||
-           phantomOrange != rhs.phantomOrange ||
-           phantoms != rhs.phantoms ||
            map != rhs.map ||
            door[0] != rhs.door[0] ||
            door[1] != rhs.door[1] ||

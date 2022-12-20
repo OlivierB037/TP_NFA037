@@ -128,7 +128,7 @@ bool Mouvement::move(Side direction, Perso &perso, Labyrinthe &labyrinthe, SDL_W
 //                break;
 //            }
 //        }
-        labyrinthe.checkFood(dynamic_cast<Hero &>(perso), game);
+        labyrinthe.checkFood(dynamic_cast<Hero &>(perso), game,game);
     }
         return true;
     }

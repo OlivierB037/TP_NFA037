@@ -55,7 +55,7 @@ public:
 
     int getSideLimit(Position const &position,Side direction,SDL_Window *window) const;
 
-    int checkFood(Hero &hero, FoodListener &listener);
+    int checkFood(Hero &hero, FoodListener &listener, Vulnerability_Callback &callback);
 
     Bloc const * const*getDoor() const;
 
@@ -69,7 +69,7 @@ public:
 
     void checkCollision(Hero &hero);
 
-    const std::map<int, Phantom *> &getPhantoms() const;
+
 
 private:
     void endPhantomsVulnerability();
@@ -78,11 +78,8 @@ private:
     //TODO déplacer fantomes dans Game et ne conserver que le tableau de pointeurs
 
     /* phantomes */
-    PhantomBlue phantomBlue;
-    PhantomRed phantomRed;
-    PhantomPink phantomPink;
-    PhantomOrange phantomOrange;
-    std::map<int,Phantom*> phantoms;
+
+
 
     /*mutex de synchronisation du thread gérant l'invincibilité après avoir mangé un fruit */
     std::mutex vulnerability_lock;

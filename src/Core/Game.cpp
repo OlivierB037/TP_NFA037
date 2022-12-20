@@ -18,8 +18,15 @@ Game::Game(const std::string& labyrinthFilePath) {
     std::vector<SDL_Rect*> vector;
     this->emptyRects = std::make_unique<std::vector<SDL_Rect*>>(vector);
 
-    Hero _hero;
-    this->hero = std::make_unique<Hero>(_hero);
+
+    this->hero = std::make_unique<Hero>(Hero());
+
+
+
+    phantoms.insert(std::make_pair(PhantomRed::PHANTOM_KEY, &phantomRed));
+    phantoms.insert(std::make_pair(PhantomBlue::PHANTOM_KEY, &phantomBlue));
+    phantoms.insert(std::make_pair(PhantomOrange::PHANTOM_KEY, &phantomOrange));
+    phantoms.insert(std::make_pair(PhantomPink::PHANTOM_KEY, &phantomPink));
 }
 //TODO déplacer initialisation labyrinthe dans constructeur
 void Game::foodEaten(int positionX, int positionY, int foodCount) {
@@ -33,8 +40,8 @@ void Game::foodEaten(int positionX, int positionY, int foodCount) {
 
 
 
-void Game::start(Window *window) {
-
+void Game::start(Window *_window) {
+    this->window = _window;
     try {
         labyrinthe = std::make_shared<Labyrinthe>("resources/terrain.txt", 56, 62, window->getWindow());
         //Labyrinthe labyrinthe;
@@ -206,11 +213,11 @@ void Game::start(Window *window) {
 
 
         if (emptyRects->empty()){
-            window->updateTextures(*hero,labyrinthe->getPhantoms());
+            window->updateTextures(*hero,phantoms);
 
         }
         else{
-            window->updateTextures(*hero,labyrinthe->getPhantoms(),*emptyRects);
+            window->updateTextures(*hero,phantoms,*emptyRects);
         }
 //        SDL_Rect * test = new SDL_Rect({0,0,81,81});
 //        SDL_RenderCopy(renderer,backgroundEmpty,test,test);
@@ -229,4 +236,19 @@ bool Game::arrowPressed(){
 
 
 
+}
+//TODO rendre thread safe
+void Game::endVulnerability() {
+
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","ending thread : phantoms are not vulnerable",window->getWindow());
+    for (auto& p : phantoms) {
+        p.second->setVulnerable(false);
+    }
+}
+
+void Game::startVulnerability() {
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","starting thread : phantoms are vulnerable",window->getWindow());
+    for (auto& p : phantoms) {
+        p.second->setVulnerable(true);
+    }
 }

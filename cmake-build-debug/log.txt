@@ -1,0 +1,16 @@
+
+------------------------------- NEW LOG ---------------------------------
+INFO LOG Tue Dec 20 15:00:23 2022
+	copy door stayed close
+INFO LOG Tue Dec 20 15:00:26 2022
+	copy is really a copy
+INFO LOG Tue Dec 20 15:00:26 2022
+	if this Line is in the log, there were no errors accessing copy after original was deleted
+
+------------------------------- NEW LOG ---------------------------------
+INFO LOG Tue Dec 20 15:05:45 2022
+	copy door stayed close
+INFO LOG Tue Dec 20 15:05:48 2022
+	copy is really a copy
+INFO LOG Tue Dec 20 15:05:48 2022
+	if this Line is in the log, there were no errors accessing copy after original was deleted
