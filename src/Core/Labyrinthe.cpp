@@ -3,17 +3,14 @@
 //
 
 #include "Labyrinthe.h"
-#include "../Characters/Perso.h"
 #include "../Labyrinth_Exception.h"
 #include "../Environment/Wall.h"
 #include "../Environment/Food.h"
 #include "../Environment/Fruit.h"
-#include "../Logger.h"
 #include <fstream>
-#include <iostream>
-
 #include <SDL.h>
 #include <thread>
+
 template<typename T>
 bool Labyrinthe::instanceOf(Bloc *trgt)
 {
@@ -24,15 +21,12 @@ Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terra
         DIMENSION_X(terrain_width), DIMENSION_Y(terrain_height), door{nullptr, nullptr, nullptr, nullptr}
 
 {
-
-
     this->window = _window;
     std::ifstream fileReader {fileName} ;
     std::string line;
     map = new Bloc**[DIMENSION_X];
     for (int x =0; x < DIMENSION_X ; x++) {
         map[x] = new Bloc*[DIMENSION_Y];
-
     }
 
     int doorIndex = 0;
@@ -46,21 +40,16 @@ Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terra
 
             if(line[x] == '#') {
                 map[x][y] = new Wall();
-
             }
             else if(line[x] == '_'){
                 //map[x][y].setCrossable(true);
                 //const char c[] = {static_cast<char>('0' + ((char)doorIndex)),'-',static_cast<char>('0'+ ((char)doorY)),'\0'};
-
-
                 if(door[0] == nullptr) { //first door bloc not set
                     if (line[x+1] == '_'){ //horizontal door
                         for (int i = 0; i < 4; ++i) {
                             if (line[x + i] == '_'){
                                 map[x+i][y] = new Door(false);
                                 door[i] = map[x + i][y];
-
-
                             }
                             else{
                                 throw Labyrinth_Exception("doors format error : not enough door blocs (horizontal door detected)" );
@@ -69,15 +58,11 @@ Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terra
                         x += 3;
                     }
                     else{// vertical door
-
                         doorY = y;
                         map[x][y] = new Door(false);
                         door[doorIndex] = map[x][y];
-
                         doorIndex++;
                     }
-
-
                 }
                 else{
                     if (door[doorIndex] == nullptr){
@@ -86,11 +71,9 @@ Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terra
                             doorY = y;
                             map[x][y] = new Door(false);
                             door[doorIndex] = map[x][y];
-
                             doorIndex++;
                         }else{
                             throw Labyrinth_Exception("doors format error : not enough door blocs (vertical door detected)" );
-
                         }
                     }else {
                         throw Labyrinth_Exception("multiple doors error (all 4 door blocs already set)");
@@ -108,7 +91,6 @@ Labyrinthe::Labyrinthe(const std::string& fileName, int terrain_width, int terra
             else{
                 map[x][y] = new Bloc(true);
             }
-
         }
     }
     if (!(fileReader.eof() || fileReader.fail())){
@@ -124,7 +106,6 @@ Labyrinthe::Labyrinthe(const Labyrinthe& labyrinthe)
         : foodCount(labyrinthe.foodCount),DIMENSION_X(labyrinthe.DIMENSION_X),
           DIMENSION_Y(labyrinthe.DIMENSION_Y), door{nullptr,nullptr,nullptr,nullptr}, map(nullptr),window(nullptr)
 {
-
     map = new Bloc**[DIMENSION_X];
 //    bool messaged = false;
 //    if (!messaged){
@@ -161,19 +142,11 @@ Labyrinthe::Labyrinthe(const Labyrinthe& labyrinthe)
             }
         }
     }
-
-
-
-
     /*window n'est pas copié mais cet attribut n'est la qu'a des fins de test    */
     window = labyrinthe.window;
 }
 
 Labyrinthe::~Labyrinthe() {
-
-
-
-
     if (map != nullptr){
 
         for (int x = 0; x < DIMENSION_X; ++x) {
@@ -183,11 +156,9 @@ Labyrinthe::~Labyrinthe() {
                     delete map[x][y];
 
                 }
-
             }
         }
     }
-
 }
 
 Labyrinthe &Labyrinthe::operator=(const Labyrinthe &rhs) {
@@ -257,21 +228,14 @@ Labyrinthe &Labyrinthe::operator=(const Labyrinthe &rhs) {
                 }
             }
         }
-
     }
-
-
     for (int i = 0; i < 4; ++i) {
         if(door[i] != nullptr) {
             delete door[i];
         }
         door[i] = new Door(rhs.door[i]);
     }
-
     foodCount = rhs.foodCount;
-
-
-
 }
 
 Bloc const *Labyrinthe::getSideBloc(const Position &position, Side direction) {
@@ -288,11 +252,8 @@ int Labyrinthe::getSideLimit(const Position &position, Side direction, SDL_Windo
         case LEFT: {
             if (!(map[position.x / BLOC_SIZE][position.y / BLOC_SIZE]->isCrossable())) { // is the player already inside a crossable
 //                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","inside a wall",window);
-
                 return -1;
             }
-//            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","crossable on right bloc 1",window);
-
             int leftBlocX = (position.x / BLOC_SIZE) - 1;
             int leftBlocY = position.y / BLOC_SIZE;
             return (!(map[leftBlocX][leftBlocY]->isCrossable()) || !(map[leftBlocX][leftBlocY + 1]->isCrossable()) ||
@@ -415,13 +376,9 @@ void Labyrinthe::incrementPillCount(int value) {
     this->foodCount += value;
 }
 
-
-
 void Labyrinthe::checkCollision(Hero &hero) {
 
 }
-
-
 
 bool Labyrinthe::operator==(const Labyrinthe &rhs) const {
     return DIMENSION_X == rhs.DIMENSION_X &&
@@ -446,9 +403,6 @@ bool Labyrinthe::operator!=(const Labyrinthe &rhs) const {
            foodCount != rhs.foodCount ||
            window != rhs.window;
 }
-
-
-
 
 Position Labyrinthe::getBlocCoordinates(int blocX, int blocY) {
     return Position(blocX * BLOC_SIZE, blocY * BLOC_SIZE);

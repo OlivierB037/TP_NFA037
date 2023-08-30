@@ -5,8 +5,6 @@
 #ifndef TP_01_TERRAIN_H
 #define TP_01_TERRAIN_H
 #define BLOC_SIZE 9
-
-
 #define NO_WALL_NEXT 11111
 
 #include <map>

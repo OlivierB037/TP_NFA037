@@ -18,14 +18,20 @@ public:
 
     bool operator!=(const PhantomPink &rhs) const;
 
-    void setCurrentSprite(const SDL_Rect *currentSprite);
+    void setCurrentSprite(const SDL_Rect *currentSprite) override;
 
-    void changeSprite(Side direction);
+    void changeSprite(Side direction) override;
 
-    const Position& getStartingPosition() const;
+    const Position& getStartingPosition() const override;
+
+    Side getDirection() override;
+
+    void setDirection(Side _direction) override;
 
 private:
     const Position startingPosition;
+
+    Side currentDirection;
 
 };
 

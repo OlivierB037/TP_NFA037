@@ -9,7 +9,7 @@ Hero::Hero()
    : super(CHARACTER_SIZE, CHARACTER_SIZE, 0, CHARACTER_SIZE,
            CHARACTER_SIZE, 0, 0, 0,
            CHARACTER_SIZE, (CHARACTER_SIZE * 2), 0, (CHARACTER_SIZE * 2),
-           CHARACTER_SIZE, (3 * CHARACTER_SIZE), 0, (3 * CHARACTER_SIZE)), startingPosition(243,189)
+           CHARACTER_SIZE, (3 * CHARACTER_SIZE), 0, (3 * CHARACTER_SIZE), LEFT), startingPosition(243,189)
 
 {
     Perso::setPosition(startingPosition.x, startingPosition.y);

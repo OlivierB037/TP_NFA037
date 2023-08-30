@@ -19,15 +19,20 @@ public:
 
     inline static const int PHANTOM_KEY{15635};
 
+    void setCurrentSprite(const SDL_Rect *currentSprite) override;
 
-    void setCurrentSprite(const SDL_Rect *currentSprite);
+    void changeSprite(Side direction) override;
 
-    void changeSprite(Side direction);
+    const Position& getStartingPosition() const override;
 
-    const Position& getStartingPosition() const;
+    Side getDirection() override;
+
+    void setDirection(Side _direction) override;
 
 private:
     const Position startingPosition;
+
+    Side currentDirection;
 
 };
 

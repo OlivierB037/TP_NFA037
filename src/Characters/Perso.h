@@ -22,7 +22,7 @@ protected:
           int _up_1_x, int _up_1_y,
           int _up_2_x, int _up_2_y,
           int _down_1_x, int _down_1_y,
-          int _down_2_x, int _down_2_y);
+          int _down_2_x, int _down_2_y, Side startingSide);
     Perso() = delete;
 
     SDL_Rect const *currentSprite;
@@ -56,7 +56,7 @@ public:
 
     virtual const Position& getStartingPosition() const = 0;
 
-    inline static const char* sprite_fileName{ "resources/persos24.bmp" };
+    constexpr static char* const sprite_fileName{ "resources/persos24.bmp" };
     inline static const int MAXIMUM_MOTION_SCALE{6};
 
 private:

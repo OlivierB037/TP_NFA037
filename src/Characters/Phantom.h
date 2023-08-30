@@ -19,9 +19,13 @@ public:
 
     bool operator!=(const Phantom &rhs) const;
 
+    virtual Side getDirection() = 0;
 
+    virtual void setDirection(Side _direction) = 0;
 
     inline static const int VULNERABILITY_TIME {10000};
+
+    void changeSprite(Side direction);
 
     bool isVulnerable() const;
 
@@ -34,7 +38,7 @@ public:
 protected:
     Phantom(int _left_1_x, int _left_1_y, int _left_2_x, int _left_2_y, int _right_1_x, int _right_1_y, int _right_2_x,
             int _right_2_y, int _up_1_x, int _up_1_y, int _up_2_x, int _up_2_y, int _down_1_x, int _down_1_y,
-            int _down_2_x, int _down_2_y);
+            int _down_2_x, int _down_2_y, Side startingSide);
     Phantom() = delete;
 private:
     template<typename T> static bool instanceOf(Phantom *trgt);

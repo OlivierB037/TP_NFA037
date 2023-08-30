@@ -10,9 +10,10 @@
 #include "Labyrinthe.h"
 #include "../Callbacks/FoodListener.h"
 #include "../UI/Window.h"
+#include "../Callbacks/Phantom_Callback.h"
 
 
-class Game : public FoodListener, public Vulnerability_Callback{
+class Game : public FoodListener, public Vulnerability_Callback, public Phantom_Callback{
 public:
     explicit Game(const std::string &labyrinthFilePath);
 
@@ -23,6 +24,10 @@ public:
     void endVulnerability() override;
 
     void startVulnerability() override;
+
+    void wallCollision(int phantomKey) override;
+
+    void heroCollision() override;
 
 private:
     bool arrowPressed();

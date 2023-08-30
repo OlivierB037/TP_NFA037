@@ -8,7 +8,7 @@
 Perso::Perso(int _left_1_x, int _left_1_y, int _left_2_x, int _left_2_y,
                 int _right_1_x, int _right_1_y, int _right_2_x, int _right_2_y,
                 int _up_1_x, int _up_1_y, int _up_2_x, int _up_2_y,
-                int _down_1_x, int _down_1_y, int _down_2_x, int _down_2_y)
+                int _down_1_x, int _down_1_y, int _down_2_x, int _down_2_y, Side startingSide)
 
              : image( _left_1_x,  _left_1_y,  _left_2_x,  _left_2_y,
                       _right_1_x,  _right_1_y,  _right_2_x,  _right_2_y,
@@ -16,7 +16,29 @@ Perso::Perso(int _left_1_x, int _left_1_y, int _left_2_x, int _left_2_y,
                       _down_1_x,  _down_1_y,  _down_2_x, _down_2_y),
                 stepCount(1)
 {
-    currentSprite = &(image.getLeft1());
+    switch (startingSide) {
+        case LEFT:{
+            currentSprite = &(image.getLeft1());
+            break;
+        }
+        case RIGHT:{
+            currentSprite = &(image.getRight1());
+            break;
+        }
+        case UP:{
+            currentSprite = &(image.getUp1());
+            break;
+        }
+        case DOWN:{
+            currentSprite = &(image.getDown1());
+            break;
+        }
+        default:{
+            currentSprite = &(image.getLeft1());
+            break;
+        }
+    }
+
 }
 
 const Sprites &Perso::getImage() const {

@@ -33,7 +33,7 @@ void Game::foodEaten(int positionX, int positionY, int foodCount) {
 //    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "message", "foodEaten called", window);
     this->emptyRects->push_back(new SDL_Rect({positionX,positionY,Food::FOOD_WIDTH,Food::FOOD_HEIGHT}));
     if (foodCount == 0){
-//        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Victory", "You win !", window);
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Victory", "You win !", window->getWindow());
         //TODO créer fonction win
     }
 }
@@ -187,7 +187,7 @@ void Game::start(Window *_window) {
                     }
                 } else {
                     if (SDL_GetKeyboardState(nullptr)[Arrows::getDirectionKey(currentDirection)->getScanCode()] && SDL_GetKeyboardState(nullptr)[lastArrowPressed->getScanCode()]){
-//                        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "message", "other direction reached", window->getWindow());
+//                        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "message", "other currentDirection reached", window->getWindow());
                         if( Mouvement::move(currentDirection, lastArrowPressed->getDirection(), *hero, *labyrinthe, window->getWindow(), *this)) {
                             currentDirection = lastArrowPressed->getDirection();
                         }
@@ -209,6 +209,9 @@ void Game::start(Window *_window) {
             currentDirection = NONE;
             hero->setCurrentSprite(hero->getImage().getBaseRect(lastArrowPressed->getDirection()));
             hero->setStepCount(SPRITE_RATE);
+        }
+        for (auto p : phantoms) {
+            Mouvement::move(p.second->getDirection(),*p.second,*labyrinthe,window->getWindow(),*this);
         }
 
 
@@ -251,4 +254,29 @@ void Game::startVulnerability() {
     for (auto& p : phantoms) {
         p.second->setVulnerable(true);
     }
+}
+
+void Game::wallCollision(int phantomKey) {
+    bool walls[4];
+    auto f = [&] (Side s, Phantom *p) -> bool{ return (labyrinthe->getSideLimit(p->getPosition(), s, window->getWindow()) != NO_WALL_NEXT ); };
+    walls[0] = f(LEFT,phantoms.at(phantomKey));
+    walls[1] = f(RIGHT,phantoms.at(phantomKey));
+    walls[2] = f(UP,phantoms.at(phantomKey));
+    walls[3] =  f(DOWN,phantoms.at(phantomKey));
+    int i = 0;
+    srand(time(NULL));
+    do{
+
+
+        i = rand() % 4;
+    }while(walls[i]);
+//    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message","wall hit",window->getWindow());
+    Logger::getInstance()->addInfoLog("wall collision : chosen direction = %d",i);
+    phantoms.at(phantomKey)->setDirection(static_cast<Side>(i));
+
+
+}
+
+void Game::heroCollision() {
+//TODO créer fonction collision générale qui vérifie tous les fantomes a chaque tour
 }

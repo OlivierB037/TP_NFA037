@@ -3,15 +3,17 @@
 //
 
 #include "PhantomRed.h"
+typedef Phantom super;
 
 PhantomRed::PhantomRed()
         :   Phantom(72, 144, 108, 144,
                            0, 144, 36, 144,
                            144, 144, 180, 144,
-                           216, 144, 252, 144), startingPosition(441,243)
+                           216, 144, 252, 144,LEFT), startingPosition(441,243)
 {
 
     this->setPosition(startingPosition.x,startingPosition.y);
+    this->currentDirection = LEFT;
 }
 
 void PhantomRed::setCurrentSprite(const SDL_Rect *_currentSprite) {
@@ -19,7 +21,10 @@ void PhantomRed::setCurrentSprite(const SDL_Rect *_currentSprite) {
 }
 
 void PhantomRed::changeSprite(Side direction) {
-
+    if (direction != currentDirection){
+        currentDirection = direction;
+    }
+    super::changeSprite(direction);
 }
 bool PhantomRed::operator==(const PhantomRed &rhs) const {
     return static_cast<const Phantom &>(*this) == static_cast<const Phantom &>(rhs) &&
@@ -35,4 +40,11 @@ bool PhantomRed::operator!=(const PhantomRed &rhs) const {
 
 const Position &PhantomRed::getStartingPosition() const {
     return startingPosition;
+}
+Side PhantomRed::getDirection() {
+    return currentDirection;
+}
+
+void PhantomRed::setDirection(Side _direction) {
+    this->currentDirection = _direction;
 }
